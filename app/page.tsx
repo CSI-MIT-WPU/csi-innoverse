@@ -12,14 +12,14 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="w-full px-12">
-      <div className="grid gap-4 md:grid-cols-2 my-10">
-        <Card className="w-1/2 hover:border-slate-400 mx-auto">
+      <div className="grid gap-4 grid-cols-2 my-10">
+        <Card className="md:w-1/2 hover:border-slate-400 mx-auto">
           <Link
             href="/dsa-submission"
             className="font-bold text-xl hover:cursor-pointer"
           >
             <CardHeader className="flex flex-row items-center justify-between  pb-1"></CardHeader>
-            <CardContent className="text-center">
+            <CardContent className="text-center text-sm md:text-base">
               <div className="text-sm font-normal text-muted-foreground">
                 Click here for
               </div>
@@ -27,10 +27,10 @@ export default function Home() {
             </CardContent>
           </Link>
         </Card>
-        <Card className="w-1/2 hover:border-slate-400 mx-auto hover:cursor-pointer">
+        <Card className="md:w-1/2 hover:border-slate-400 mx-auto hover:cursor-pointer">
           <Link href="/rec-form" className="font-bold text-xl ">
             <CardHeader className="flex flex-row items-center justify-between  pb-1"></CardHeader>
-            <CardContent className="text-center">
+            <CardContent className="text-center text-sm md:text-base">
               <div className="text-sm font-normal text-muted-foreground">
                 Click here for
               </div>

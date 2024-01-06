@@ -26,10 +26,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/components/ui/use-toast";
+import { useState } from "react";
+import { tailspin } from "ldrs";
 
 const DsaSubmission = () => {
   const { toast } = useToast();
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  tailspin.register();
+
   const form = useForm<TDsaFormSchema>({
     resolver: zodResolver(DsaFormSchema),
     defaultValues: {
@@ -44,6 +49,7 @@ const DsaSubmission = () => {
   });
 
   const onSubmit = async (data: TDsaFormSchema) => {
+    setIsLoading(true);
     const inputElement = document.querySelector(
       "input[name='image']"
     ) as HTMLInputElement | null;
@@ -115,6 +121,8 @@ const DsaSubmission = () => {
         "Error submitting form"
         // error
       );
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -251,15 +259,24 @@ const DsaSubmission = () => {
                   )}
                 />
                 <Button
-                  disabled={form.formState.isSubmitting}
+                  disabled={form.formState.isSubmitting || isLoading}
                   type="submit"
                   className="mt-5"
                 >
-                  Submit
+                  {isLoading ? "Submitting..." : "Submit"}
+                  {isLoading && (
+                    <div className="ml-2 mt-1">
+                      <l-tailspin
+                        size="20"
+                        stroke="3"
+                        speed="0.9"
+                        color="white"
+                      ></l-tailspin>
+                    </div>
+                  )}
                 </Button>
               </form>
             </Form>
-            <div className="relative"></div>
           </CardContent>
           <CardFooter className="flex justify-between"></CardFooter>
         </Card>
