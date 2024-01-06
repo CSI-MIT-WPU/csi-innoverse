@@ -55,6 +55,24 @@ const DsaSubmission = () => {
     },
   });
 
+  const handleFileChange = (event: any, field: any) => {
+    const file = event.target.files[0];
+
+    if (file) {
+      // Check if the file size exceeds 3 MB
+      if (file.size > 3 * 1024 * 1024) {
+        // Set an error message for the file field
+        form.setError("image", {
+          type: "manual",
+          message: "File size must be less than 3 MB.",
+        });
+      } else {
+        // Clear any existing error messages for the file field
+        form.clearErrors("image");
+      }
+    }
+  };
+
   const onSubmit = async (data: TDsaFormSchema) => {
     setIsLoading(true);
 
@@ -66,6 +84,16 @@ const DsaSubmission = () => {
       imageFile = inputElement.files?.[0];
     } else {
       console.error("Input element not found");
+    }
+
+    if (imageFile && imageFile.size > 3 * 1024 * 1024) {
+      form.setError("image", {
+        type: "manual",
+        message: "File size must be less than 3 MB.",
+      });
+
+      setIsLoading(false); // Stop loading state
+      return; // Stop execution if file size is too large
     }
 
     const formData = new FormData();
@@ -137,7 +165,7 @@ const DsaSubmission = () => {
   return (
     <>
       <div className="w-full flex justify-center mt-10">
-        <Card className="w-3/4">
+        <Card className="md:w-3/4 w-11/12">
           <CardHeader>
             <CardTitle className="text-3xl font-bold ">
               DSA Submission
@@ -298,6 +326,7 @@ const DsaSubmission = () => {
                           {...field}
                           type="file"
                           accept=".jpeg,.png,.jpg"
+                          onChange={(e) => handleFileChange(e, field)}
                         />
                       </FormControl>
                       <FormDescription>
