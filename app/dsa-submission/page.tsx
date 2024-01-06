@@ -300,6 +300,9 @@ const DsaSubmission = () => {
                           accept=".jpeg,.png,.jpg"
                         />
                       </FormControl>
+                      <FormDescription>
+                        Make sure the file size is less than 3 MB.
+                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
