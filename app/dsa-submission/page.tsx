@@ -27,11 +27,20 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/components/ui/use-toast";
 import { useState } from "react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { getRecentQuestions } from "./data";
 
 const DsaSubmission = () => {
   const { toast } = useToast();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const questionsData = getRecentQuestions();
 
   const form = useForm<TDsaFormSchema>({
     resolver: zodResolver(DsaFormSchema),
@@ -48,6 +57,7 @@ const DsaSubmission = () => {
 
   const onSubmit = async (data: TDsaFormSchema) => {
     setIsLoading(true);
+
     const inputElement = document.querySelector(
       "input[name='image']"
     ) as HTMLInputElement | null;
@@ -171,7 +181,7 @@ const DsaSubmission = () => {
                     </FormItem>
                   )}
                 />
-                <div className="mt-2 mb-1">
+                {/* <div className="mt-2 mb-1">
                   <label
                     htmlFor="questionNumber"
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -195,7 +205,41 @@ const DsaSubmission = () => {
                     <option value="123">123</option>
                     <option value="214">214</option>
                   </datalist>
-                </div>
+                </div> */}
+                <FormField
+                  control={form.control}
+                  name="questionNumber"
+                  render={({ field }) => (
+                    <FormItem className="mt-2">
+                      <FormLabel>Question Number</FormLabel>
+                      <Select
+                        onValueChange={(value) => field.onChange(Number(value))}
+                        defaultValue={field.value?.toString()}
+                        {...form.register("questionNumber", {
+                          valueAsNumber: true,
+                        })}
+                      >
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a question number" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {questionsData.map((question) => (
+                            <SelectItem
+                              key={question.qNumber}
+                              value={question.qNumber.toString()}
+                            >
+                              Day {question.day} Question{" "}
+                              {question.qNumber.toString()}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
                 <FormField
                   control={form.control}
                   name="time"
@@ -250,7 +294,11 @@ const DsaSubmission = () => {
                     <FormItem className="mt-2">
                       <FormLabel>Screenshot</FormLabel>
                       <FormControl>
-                        <Input {...field} type="file" />
+                        <Input
+                          {...field}
+                          type="file"
+                          accept=".jpeg,.png,.jpg"
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
