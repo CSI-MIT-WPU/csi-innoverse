@@ -13,12 +13,12 @@ export function MainNav({
     >
       <div className="flex items-center space-x-2">
         <Image
-          src="/assets/csi-logo.png"
+          src="/assets/csi-circle-logo.png"
           alt="CSI Logo"
           width={38}
           height={38}
         />
-        <div className="font-bold md:text-2xl text-sky-950">CSI Forms</div>
+        <div className="font-bold md:text-2xl text-foreground">CSI Forms</div>
       </div>
       <Link
         href="/"
