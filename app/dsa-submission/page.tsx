@@ -86,14 +86,26 @@ const DsaSubmission = () => {
       console.error("Input element not found");
     }
 
-    if (imageFile && imageFile.size > 3 * 1024 * 1024) {
-      form.setError("image", {
-        type: "manual",
-        message: "File size must be less than 3 MB.",
-      });
+    if (imageFile) {
+      if (imageFile.size > 3 * 1024 * 1024) {
+        form.setError("image", {
+          type: "manual",
+          message: "File size must be less than 3 MB.",
+        });
 
-      setIsLoading(false); // Stop loading state
-      return; // Stop execution if file size is too large
+        setIsLoading(false);
+        return;
+      }
+      const allowedFileTypes = ["image/jpeg", "image/png", "image/jpg"];
+      if (!allowedFileTypes.includes(imageFile.type)) {
+        form.setError("image", {
+          type: "manual",
+          message: "File type must be JPEG, PNG, or JPG.",
+        });
+
+        setIsLoading(false);
+        return;
+      }
     }
 
     const formData = new FormData();
@@ -107,7 +119,12 @@ const DsaSubmission = () => {
       formData.append("image", imageFile);
     } else {
       console.error("Image file is undefined");
-      return; // Stop execution if image file is undefined
+      form.setError("image", {
+        type: "manual",
+        message: "Screenshot is required",
+      });
+      setIsLoading(false);
+      return;
     }
 
     try {
