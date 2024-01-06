@@ -18,17 +18,17 @@ export function MainNav({
           width={38}
           height={38}
         />
-        <div className="font-bold text-2xl text-sky-950">CSI Forms</div>
+        <div className="font-bold md:text-2xl text-sky-950">CSI Forms</div>
       </div>
       <Link
         href="/"
-        className="text-sm font-medium transition-colors hover:text-primary"
+        className="hidden md:block text-sm font-medium transition-colors hover:text-primary"
       >
         Home
       </Link>
       <Link
         href="/dsa-submission"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+        className="hidden md:block text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
       >
         DSA Submit
       </Link>

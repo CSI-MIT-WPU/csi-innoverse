@@ -5,6 +5,7 @@ import UserNav from "./components/UserNav";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import { ModeToggle } from "./components/ModeToggle";
+import MobileNav from "./components/MobileNav";
 
 export function Navbar() {
   const controls = useAnimation();
@@ -39,8 +40,10 @@ export function Navbar() {
           alt="MITWPU Logo"
           width={35}
           height={40}
+          className="hidden md:block"
         />
       </div>
+      <MobileNav />
     </motion.nav>
   );
 }
