@@ -11,7 +11,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="w-full px-12">
+    <main className="w-full px-4 md:px-12">
       <div className="grid gap-4 grid-cols-2 my-10">
         <Card className="md:w-1/2 hover:border-slate-400 mx-auto">
           <Link

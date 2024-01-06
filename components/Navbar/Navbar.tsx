@@ -28,10 +28,10 @@ export function Navbar() {
 
   return (
     <motion.nav
-      className="flex bg-background h-16 items-center px-4 sticky top-0 z-10"
+      className="flex bg-background h-16 items-center px-4 md:px-10 sticky top-0 z-10"
       animate={controls}
     >
-      <MainNav className="mx-6" />
+      <MainNav className="mr-6" />
       <div className="ml-auto flex items-center space-x-4">
         {/* <UserNav /> */}
         <ModeToggle />

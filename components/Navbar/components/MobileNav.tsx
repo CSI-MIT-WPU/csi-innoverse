@@ -12,7 +12,7 @@ import Link from "next/link";
 
 export default function MobileNav() {
   return (
-    <div className="flex md:hidden">
+    <div className="flex md:hidden ml-2">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="icon">
