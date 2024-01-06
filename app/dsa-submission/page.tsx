@@ -27,13 +27,11 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/components/ui/use-toast";
 import { useState } from "react";
-import { tailspin } from "ldrs";
 
 const DsaSubmission = () => {
   const { toast } = useToast();
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
-  tailspin.register();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const form = useForm<TDsaFormSchema>({
     resolver: zodResolver(DsaFormSchema),
@@ -264,16 +262,6 @@ const DsaSubmission = () => {
                   className="mt-5"
                 >
                   {isLoading ? "Submitting..." : "Submit"}
-                  {isLoading && (
-                    <div className="ml-2 mt-1">
-                      <l-tailspin
-                        size="20"
-                        stroke="3"
-                        speed="0.9"
-                        color="white"
-                      ></l-tailspin>
-                    </div>
-                  )}
                 </Button>
               </form>
             </Form>
