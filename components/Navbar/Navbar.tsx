@@ -27,7 +27,7 @@ export function Navbar() {
 
   return (
     <motion.nav
-      className="flex h-16 items-center px-4 sticky top-0 z-10"
+      className="flex bg-background h-16 items-center px-4 sticky top-0 z-10"
       animate={controls}
     >
       <MainNav className="mx-6" />

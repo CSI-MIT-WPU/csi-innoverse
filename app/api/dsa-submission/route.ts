@@ -20,7 +20,7 @@ export async function POST(request: Request) {
   const file: File = data.get("image") as File;
   // console.log(file);
   // return;
-  const otherData: TDsaFormSchema = {
+  const otherData: { [key: string]: string | number | File } = {
     code: "",
     email: "",
     csiId: 0,
@@ -29,10 +29,8 @@ export async function POST(request: Request) {
     memory: 0,
     image: "",
   };
-  for (const entry of data.entries()) {
-    const key = entry[0];
-    const value = entry[1];
 
+  for (const [key, value] of data.entries()) {
     if (
       key === "csiId" ||
       key === "questionNumber" ||
@@ -44,6 +42,7 @@ export async function POST(request: Request) {
       otherData[key] = value;
     }
   }
+
   const result = DsaFormSchema.safeParse(otherData);
 
   if (result.success) {

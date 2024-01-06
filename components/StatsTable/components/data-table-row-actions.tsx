@@ -48,7 +48,7 @@ export function DataTableRowActions<TData>({
         <DropdownMenuSeparator />
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>Labels</DropdownMenuSubTrigger>
-          <DropdownMenuSubContent>
+          {/* <DropdownMenuSubContent>
             <DropdownMenuRadioGroup value={task.label}>
               {labels.map((label) => (
                 <DropdownMenuRadioItem key={label.value} value={label.value}>
@@ -56,7 +56,7 @@ export function DataTableRowActions<TData>({
                 </DropdownMenuRadioItem>
               ))}
             </DropdownMenuRadioGroup>
-          </DropdownMenuSubContent>
+          </DropdownMenuSubContent> */}
         </DropdownMenuSub>
         <DropdownMenuSeparator />
         <DropdownMenuItem>

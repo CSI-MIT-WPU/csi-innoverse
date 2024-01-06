@@ -44,7 +44,15 @@ const DsaSubmission = () => {
   });
 
   const onSubmit = async (data: TDsaFormSchema) => {
-    const imageFile = document.querySelector("input[name='image']").files[0];
+    const inputElement = document.querySelector(
+      "input[name='image']"
+    ) as HTMLInputElement | null;
+    let imageFile;
+    if (inputElement) {
+      imageFile = inputElement.files?.[0];
+    } else {
+      console.error("Input element not found");
+    }
 
     const formData = new FormData();
     formData.append("email", data.email);
@@ -53,7 +61,12 @@ const DsaSubmission = () => {
     formData.append("time", String(data.time));
     formData.append("memory", String(data.memory));
     formData.append("code", data.code);
-    formData.append("image", imageFile);
+    if (imageFile) {
+      formData.append("image", imageFile);
+    } else {
+      console.error("Image file is undefined");
+      return; // Stop execution if image file is undefined
+    }
 
     try {
       const response = await fetch("/api/dsa-submission", {

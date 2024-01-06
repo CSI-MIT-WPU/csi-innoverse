@@ -14,22 +14,22 @@ export default function Home() {
     <main className="w-full px-12">
       <div className="grid gap-4 md:grid-cols-2 my-10">
         <Card className="w-1/2 hover:border-slate-400 mx-auto">
-          <CardHeader className="flex flex-row items-center justify-between  pb-1"></CardHeader>
-          <CardContent className="text-center">
-            <Link
-              href="/dsa-submission"
-              className="font-bold text-xl hover:cursor-pointer"
-            >
+          <Link
+            href="/dsa-submission"
+            className="font-bold text-xl hover:cursor-pointer"
+          >
+            <CardHeader className="flex flex-row items-center justify-between  pb-1"></CardHeader>
+            <CardContent className="text-center">
               <div className="text-sm font-normal text-muted-foreground">
                 Click here for
               </div>
               DSA Submission Form
-            </Link>
-          </CardContent>
+            </CardContent>
+          </Link>
         </Card>
         <Card className="w-1/2 hover:border-slate-400 mx-auto hover:cursor-pointer">
-          <CardHeader className="flex flex-row items-center justify-between  pb-1"></CardHeader>
           <Link href="/rec-form" className="font-bold text-xl ">
+            <CardHeader className="flex flex-row items-center justify-between  pb-1"></CardHeader>
             <CardContent className="text-center">
               <div className="text-sm font-normal text-muted-foreground">
                 Click here for
