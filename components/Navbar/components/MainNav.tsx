@@ -27,7 +27,7 @@ export function MainNav({
       <Link
         href="/"
         className={cn(
-          "hidden md:block text-sm font-medium  hover:text-primary transition-colors",
+          "hidden md:block text-sm font-semibold  hover:text-primary transition-colors",
           {
             "text-muted-foreground": pathname !== "/",
             "text-primary": pathname === "/",
@@ -40,7 +40,7 @@ export function MainNav({
       <Link
         href="/forms"
         className={cn(
-          "hidden md:block text-sm font-medium  hover:text-primary transition-colors",
+          "hidden md:block text-sm font-semibold  hover:text-primary transition-colors",
           {
             "text-muted-foreground": pathname !== "/forms",
             "text-primary": pathname === "/forms",

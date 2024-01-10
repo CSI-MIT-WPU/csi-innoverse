@@ -75,7 +75,7 @@ export default function Highlights({ className, ...props }: CardProps) {
           {...props}
         >
           <CardHeader>
-            <CardTitle className="text-xl md:text-2xl text-primary underline-offset-4 underline">
+            <CardTitle className="text-xl md:text-2xl text-primary ">
               Competitions & Challenges
             </CardTitle>
           </CardHeader>
@@ -88,11 +88,8 @@ export default function Highlights({ className, ...props }: CardProps) {
                 >
                   <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
                   <div className="space-y-1">
-                    <p className="font-medium leading-none">
+                    <p className="leading-none text-gray-400 font-light">
                       {notification.title}
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      {notification.description}
                     </p>
                   </div>
                 </div>
@@ -105,7 +102,7 @@ export default function Highlights({ className, ...props }: CardProps) {
           {...props}
         >
           <CardHeader>
-            <CardTitle className="text-xl md:text-2xl text-primary underline-offset-4 underline">
+            <CardTitle className="text-xl md:text-2xl text-primary ">
               Meetups
             </CardTitle>
           </CardHeader>
@@ -118,11 +115,8 @@ export default function Highlights({ className, ...props }: CardProps) {
                 >
                   <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
                   <div className="space-y-1">
-                    <p className="font-medium leading-none">
+                    <p className=" leading-none text-gray-400 font-light">
                       {notification.title}
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      {notification.description}
                     </p>
                   </div>
                 </div>
@@ -135,7 +129,7 @@ export default function Highlights({ className, ...props }: CardProps) {
           {...props}
         >
           <CardHeader>
-            <CardTitle className="text-xl md:text-2xl text-primary underline-offset-4 underline">
+            <CardTitle className="text-xl md:text-2xl text-primary">
               Attractions
             </CardTitle>
           </CardHeader>
@@ -148,11 +142,8 @@ export default function Highlights({ className, ...props }: CardProps) {
                 >
                   <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
                   <div className="space-y-1">
-                    <p className="font-medium leading-none">
+                    <p className=" leading-none text-gray-400 font-light">
                       {notification.title}
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      {notification.description}
                     </p>
                   </div>
                 </div>
