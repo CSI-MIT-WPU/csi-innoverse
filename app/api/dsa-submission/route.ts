@@ -23,7 +23,8 @@ export async function POST(request: Request) {
   const otherData: { [key: string]: string | number | File } = {
     code: "",
     email: "",
-    csiId: 0,
+    // csiId: 0,
+    name: "",
     questionNumber: 0,
     time: 0,
     memory: 0,
@@ -31,12 +32,7 @@ export async function POST(request: Request) {
   };
 
   for (const [key, value] of data.entries()) {
-    if (
-      key === "csiId" ||
-      key === "questionNumber" ||
-      key === "time" ||
-      key === "memory"
-    ) {
+    if (key === "questionNumber" || key === "time" || key === "memory") {
       otherData[key] = Number(value);
     } else {
       otherData[key] = value;
@@ -55,8 +51,8 @@ export async function POST(request: Request) {
       );
 
       newDsaSubmission = new DsaSubmission({
+        name: otherData.name,
         email: otherData.email, // Access values directly from otherData
-        csiId: otherData.csiId,
         questionNumber: otherData.questionNumber,
         time: otherData.time,
         memory: otherData.memory,

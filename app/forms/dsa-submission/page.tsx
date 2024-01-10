@@ -35,7 +35,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { getRecentQuestions } from "./data";
-import Loader from "@/components/Home/Loader";
 
 const DsaSubmission = () => {
   const { toast } = useToast();
@@ -46,8 +45,9 @@ const DsaSubmission = () => {
   const form = useForm<TDsaFormSchema>({
     resolver: zodResolver(DsaFormSchema),
     defaultValues: {
+      name: "",
       email: "",
-      csiId: 0,
+      // csiId: 0,
       questionNumber: 0,
       time: 0,
       memory: 0,
@@ -110,8 +110,9 @@ const DsaSubmission = () => {
     }
 
     const formData = new FormData();
+    formData.append("name", data.name);
     formData.append("email", data.email);
-    formData.append("csiId", String(data.csiId));
+    // formData.append("csiId", String(data.csiId));
     formData.append("questionNumber", String(data.questionNumber));
     formData.append("time", String(data.time));
     formData.append("memory", String(data.memory));
@@ -196,6 +197,20 @@ const DsaSubmission = () => {
               <form onSubmit={form.handleSubmit(onSubmit)}>
                 <FormField
                   control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem className="mt-2">
+                      <FormLabel>Full Name</FormLabel>
+                      <FormControl>
+                        <Input {...field} type="name" autoComplete="true" />
+                      </FormControl>
+                      <FormDescription>Enter your full name</FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
                   name="email"
                   render={({ field }) => (
                     <FormItem className="mt-2">
@@ -204,13 +219,13 @@ const DsaSubmission = () => {
                         <Input {...field} type="email" autoComplete="true" />
                       </FormControl>
                       <FormDescription>
-                        Enter your official email address
+                        Please use your college's official email address
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-                <FormField
+                {/* <FormField
                   control={form.control}
                   name="csiId"
                   render={({ field }) => (
@@ -226,32 +241,7 @@ const DsaSubmission = () => {
                       <FormMessage />
                     </FormItem>
                   )}
-                />
-                {/* <div className="mt-2 mb-1">
-                  <label
-                    htmlFor="questionNumber"
-                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    Question Number
-                  </label>
-                  <input
-                    id="questionNumber"
-                    {...form.register("questionNumber", {
-                      valueAsNumber: true,
-                    })}
-                    list="questionNumbers"
-                    name="questionNumber"
-                    type="number"
-                    placeholder="Select a question number"
-                    className={cn(
-                      "flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 mt-2"
-                    )}
-                  />
-                  <datalist id="questionNumbers">
-                    <option value="123">123</option>
-                    <option value="214">214</option>
-                  </datalist>
-                </div> */}
+                /> */}
                 <FormField
                   control={form.control}
                   name="questionNumber"

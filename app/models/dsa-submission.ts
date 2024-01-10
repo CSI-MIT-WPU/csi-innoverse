@@ -1,14 +1,18 @@
 import { Schema, model, models } from "mongoose";
 
 const DsaSubSchema = new Schema({
+  name: {
+    type: String,
+    required: [true, "Name is required!"],
+  },
   email: {
     type: String,
     required: [true, "Email is required!"],
   },
-  csiId: {
-    type: Number,
-    required: [true, "CSI Id is required"],
-  },
+  // csiId: {
+  //   type: Number,
+  //   required: [true, "CSI Id is required"],
+  // },
   questionNumber: {
     type: Number,
     required: [true, "Question Number is required"],
