@@ -9,8 +9,11 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 export default function MobileNav() {
+  const pathname = usePathname();
   return (
     <div className="flex md:hidden ml-2">
       <DropdownMenu>
@@ -25,17 +28,31 @@ export default function MobileNav() {
           <DropdownMenuItem>
             <Link
               href="/"
-              className=" text-sm font-medium transition-colors hover:text-primary"
+              className={cn(
+                " text-sm font-medium  hover:text-primary transition-colors",
+                {
+                  "text-muted-foreground": pathname !== "/",
+                  "text-primary": pathname === "/",
+                }
+              )}
+              passHref
             >
               Home
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Link
-              href="/dsa-submission"
-              className=" text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              href="/forms"
+              className={cn(
+                "text-sm font-medium  hover:text-primary transition-colors",
+                {
+                  "text-muted-foreground": pathname !== "/forms",
+                  "text-primary": pathname === "/forms",
+                }
+              )}
+              passHref
             >
-              DSA Submit
+              DSA Challenge
             </Link>
           </DropdownMenuItem>
         </DropdownMenuContent>

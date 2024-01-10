@@ -55,7 +55,7 @@ export const questionNos = [
 
 export const getRecentQuestions = () => {
   const currentDate = new Date();
-  const startDate = new Date("2024-01-04");
+  const startDate = new Date("2024-01-07");
 
   const dayDifference = Math.floor(
     (currentDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000)
