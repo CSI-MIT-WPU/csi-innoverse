@@ -33,6 +33,10 @@ const DsaSubSchema = new Schema({
     type: String,
     required: [true, "Image is required"],
   },
+  points: {
+    type: Number,
+    default: 0,
+  },
   timestamp: { type: Date, default: Date.now },
 });
 

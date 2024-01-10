@@ -10,7 +10,7 @@ import {
 
 const competitions = [
   {
-    title: "Hackathon",
+    title: "Startup Summit",
     description: "1 hour ago",
   },
   {
@@ -38,6 +38,14 @@ const meetups = [
   },
   {
     title: "Alumni Interactions",
+    description: "1 hour ago",
+  },
+  {
+    title: "Core Team Meetups",
+    description: "1 hour ago",
+  },
+  {
+    title: "Seminar",
     description: "1 hour ago",
   },
 ];

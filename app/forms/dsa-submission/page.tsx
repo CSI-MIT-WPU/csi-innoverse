@@ -76,7 +76,9 @@ const DsaSubmission = () => {
 
   const onSubmit = async (data: TDsaFormSchema) => {
     setIsLoading(true);
+    let points = 0;
 
+    // File existance check
     const inputElement = document.querySelector(
       "input[name='image']"
     ) as HTMLInputElement | null;
@@ -84,9 +86,10 @@ const DsaSubmission = () => {
     if (inputElement) {
       imageFile = inputElement.files?.[0];
     } else {
-      console.error("Input element not found");
+      console.error("File not found");
     }
 
+    // File type and size check
     if (imageFile) {
       if (imageFile.size > 3 * 1024 * 1024) {
         form.setError("image", {
@@ -109,6 +112,26 @@ const DsaSubmission = () => {
       }
     }
 
+    // Points Calculation
+    const currentDate = new Date();
+    const startDate = new Date("2024-01-09");
+
+    const question = questionsData.find(
+      (q) => q.qNumber === data.questionNumber
+    );
+    if (question) {
+      const timeDifferenceHours =
+        (currentDate.getTime() - startDate.getTime()) / (60 * 60 * 1000);
+      if (timeDifferenceHours <= 24) {
+        points = 5;
+      } else if (timeDifferenceHours <= 48) {
+        points = 3;
+      } else if (timeDifferenceHours <= 72) {
+        points = 1;
+      }
+    }
+
+    // Form Data preparation
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("email", data.email);
@@ -116,7 +139,9 @@ const DsaSubmission = () => {
     formData.append("questionNumber", String(data.questionNumber));
     formData.append("time", String(data.time));
     formData.append("memory", String(data.memory));
+    formData.append("points", String(points));
     formData.append("code", data.code);
+
     if (imageFile) {
       formData.append("image", imageFile);
     } else {
@@ -136,7 +161,7 @@ const DsaSubmission = () => {
       });
 
       if (response.ok) {
-        router.push("/");
+        router.push("/forms");
         toast({
           duration: 2000,
           description: "Successfully submitted!",
@@ -146,6 +171,7 @@ const DsaSubmission = () => {
 
       const responseData = await response.json();
 
+      // Error handling
       if (responseData.errors) {
         form.clearErrors();
         const errors: Record<string, string> = responseData.errors;

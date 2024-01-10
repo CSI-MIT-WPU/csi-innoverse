@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { cn } from "@/lib/utils";
 import {
   Card,
@@ -15,18 +16,35 @@ export default function About() {
         About Us
       </h3>
       <p className="text-center my-3 text-xs md:text-base text-muted-foreground">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias nam,
-        quod aliquid dolor eos porro obcaecati error, aliquam architecto natus
-        delectus perferendis, voluptatibus qui voluptate. Atque esse, veritatis
-        dolorum tempore eum qui. Repellat quis aspernatur veniam harum minus
-        iste expedita perspiciatis unde commodi, reprehenderit natus, ipsum
-        blanditiis aliquid. Distinctio numquam obcaecati quia in eos earum
-        eveniet maiores quas nostrum! Modi, reprehenderit! Suscipit ipsam rem
-        soluta odit nesciunt nemo praesentium. Vel quis sint quod ad corporis
-        asperiores voluptatibus consectetur hic praesentium eum repellendus
-        cumque dignissimos obcaecati, ducimus illum nulla necessitatibus
-        corrupti fuga cum suscipit minus commodi explicabo. Perferendis ipsa
-        earum error.
+        The Computer Society of India Student Chapter at MIT-WPU is a dynamic
+        technical community. Our primary goal is to nurture both personal and
+        professional growth through engaging projects and active involvement in
+        social events. As a dedicated group, we strive to create an environment
+        that encourages collaboration and skill development. Our members
+        actively contribute to impactful projects and research papers enhancing
+        their technical expertise. We believe in fostering a sense of community
+        where individuals can thrive both academically and personally. Join us
+        on this journey of innovation, learning, and social impact. Together, we
+        shape the future of technology.
+      </p>
+      <h5 className="text-lg md:text-xl mx-auto font-bold text-primary">
+        CSI Presents Collaborate Socialize and Innovate
+      </h5>
+      <p className="text-center my-3 text-xs md:text-base text-muted-foreground">
+        <span className="text-lg font-medium text-primary">CSI Innoverse </span>{" "}
+        - Embark on a tech-filled journey at our event, featuring a Coding Relay
+        with a Tech Quiz, Debugging challenges, and Code exploration. Engage in
+        a transformative Seminar diving into cutting-edge technology topics.
+        Immerse yourself in our Startup Summit's Mock Shark Tank, witnessing
+        aspiring innovators pitch ideas to real-world investors. Elevate your
+        skills in our MERN Stack Study Jam, exploring MongoDB, Express.js,
+        React, and Node.js. Strengthen inter-chapter relations at our Meet Ups,
+        fostering meaningful connections. Reconnect with alumni at our Alumni
+        Interaction, celebrating shared memories and engaging with accomplished
+        professionals. Don't miss attractions like the Startup Showcase, AR/VR
+        experiences, and a Tech Arcade for a day of innovation and inspiration.
+        Join us for an unforgettable blend of creativity, technology, and
+        collaboration!
       </p>
 
       <h4 className="text-2xl md:text-3xl mx-auto text-center font-bold text-primary mt-10">

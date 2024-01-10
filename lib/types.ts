@@ -40,6 +40,7 @@ export const DsaFormSchema = z.object({
       }
     ),
   image: z.any(),
+  points: z.number().default(0),
 });
 
 export type TDsaFormSchema = z.infer<typeof DsaFormSchema>;

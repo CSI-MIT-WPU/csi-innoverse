@@ -29,10 +29,16 @@ export async function POST(request: Request) {
     time: 0,
     memory: 0,
     image: "",
+    points: 0,
   };
 
   for (const [key, value] of data.entries()) {
-    if (key === "questionNumber" || key === "time" || key === "memory") {
+    if (
+      key === "questionNumber" ||
+      key === "time" ||
+      key === "memory" ||
+      key === "points"
+    ) {
       otherData[key] = Number(value);
     } else {
       otherData[key] = value;
@@ -58,6 +64,7 @@ export async function POST(request: Request) {
         memory: otherData.memory,
         code: otherData.code,
         image: fileLocation,
+        points: otherData.points,
       });
       await newDsaSubmission.save();
       return new NextResponse(JSON.stringify(newDsaSubmission), {
@@ -108,3 +115,53 @@ const processAndUploadImage = async (image: File, s3: S3Client) => {
 
   return { uploadResult, fileLocation };
 };
+
+interface GroupedSubmissions {
+  email: string;
+  points: number;
+  name: string;
+  submissions: TDsaFormSchema[];
+}
+
+export async function GET(req: Request, res: Response) {
+  await connectToDB();
+
+  try {
+    const allSubmissions: TDsaFormSchema[] = await DsaSubmission.find({});
+
+    // Group submissions by email and calculate points
+    const groupedSubmissions: Record<string, GroupedSubmissions> =
+      allSubmissions.reduce((result, submission) => {
+        const { email, points, name } = submission;
+
+        result[email] = result[email] || {
+          name: "",
+          email,
+          points: 0,
+          submissions: [],
+        };
+
+        if (!result[email]?.name || result[email]?.name !== name) {
+          result[email].name = name;
+        }
+
+        result[email].points += points;
+        result[email].submissions.push(submission);
+
+        return result;
+      }, {} as Record<string, GroupedSubmissions>);
+
+    // Convert the grouped submissions to an array
+    const submissionsArray: GroupedSubmissions[] =
+      Object.values(groupedSubmissions);
+
+    return new NextResponse(JSON.stringify(submissionsArray), {
+      status: 200,
+    });
+  } catch (error) {
+    console.error("Error fetching submissions:", error);
+    return new NextResponse("Failed to fetch submissions", {
+      status: 500,
+    });
+  }
+}
