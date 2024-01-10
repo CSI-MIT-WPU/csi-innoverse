@@ -1,13 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
+"use client";
 import { cn } from "@/lib/utils";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function About() {
   return (
@@ -27,11 +21,13 @@ export default function About() {
         on this journey of innovation, learning, and social impact. Together, we
         shape the future of technology.
       </p>
-      <h5 className="text-lg md:text-xl mx-auto font-bold text-primary">
+      <h5 className="text-lg md:text-xl text-center mx-auto font-bold text-primary">
         CSI Presents Collaborate Socialize and Innovate
       </h5>
       <p className="text-center my-3 text-xs md:text-base text-muted-foreground">
-        <span className="text-lg font-medium text-primary">CSI Innoverse </span>{" "}
+        <span className="md:text-lg font-medium text-primary">
+          CSI Innoverse{" "}
+        </span>{" "}
         - Embark on a tech-filled journey at our event, featuring a Coding Relay
         with a Tech Quiz, Debugging challenges, and Code exploration. Engage in
         a transformative Seminar diving into cutting-edge technology topics.

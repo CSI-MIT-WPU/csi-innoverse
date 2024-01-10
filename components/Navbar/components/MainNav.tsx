@@ -51,7 +51,7 @@ export function MainNav({
         DSA Challenge
       </Link>
       <Link
-        href="/forms"
+        href=""
         className={cn(
           "hidden md:block text-sm font-semibold  hover:text-primary transition-colors",
           {
@@ -61,7 +61,7 @@ export function MainNav({
         )}
         passHref
       >
-        Recruitment Form
+        Registration Form
       </Link>
     </div>
   );

@@ -1,10 +1,9 @@
 "use client";
 import Image from "next/image";
 import { MainNav } from "./components/MainNav";
-import UserNav from "./components/UserNav";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
-import { ModeToggle } from "./components/ModeToggle";
+// import { ModeToggle } from "./components/ModeToggle";
 import MobileNav from "./components/MobileNav";
 
 export function Navbar() {
@@ -33,7 +32,6 @@ export function Navbar() {
     >
       <MainNav className="mr-6" />
       <div className="ml-auto flex items-center space-x-4">
-        {/* <UserNav /> */}
         {/* <ModeToggle /> */}
         <Image
           src="/assets/mitwpu-logo.png"
