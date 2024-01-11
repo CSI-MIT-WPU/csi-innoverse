@@ -114,7 +114,7 @@ function Geometries() {
   });
 
   return transition((props, { position: [x, y, z], r, geometry }) => {
-    console.log(geometry);
+    // console.log(geometry);
     const materialToUse =
       geometry.id === 4 || geometry.id === 3 ? materialMITWPU : material;
     return (
