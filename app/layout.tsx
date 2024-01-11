@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "max-w-screen-2xl mx-auto bg-background font-sans antialiased no-scrollbar",
+          "max-w-screen-2xl mx-auto bg-background font-sans antialiased",
           inter.variable
         )}
       >
