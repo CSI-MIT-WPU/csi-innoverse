@@ -22,9 +22,9 @@ export default function Hero() {
             <N8AO aoRadius={3} distanceFalloff={3} intensity={1} />
           </EffectComposer>
         </Suspense>
-        <Stars />
+        {/* <Stars /> */}
         <Environment preset="dawn" />
-        <Rig />
+        {/* <Rig /> */}
       </Canvas>
     </div>
   );
@@ -105,8 +105,6 @@ function Geometry({ r, position, ...props }) {
 function Geometries() {
   const { items, material, materialMITWPU } = useStore();
 
-  const MemoizedGeometry = React.memo(Geometry);
-
   const transition = useTransition(items, {
     from: { scale: [0, 0, 0], rotation: [0, 0, 0] },
     enter: ({ r }) => ({ scale: [1, 1, 1], rotation: [r * 3, r * 3, r * 3] }),
@@ -116,10 +114,11 @@ function Geometries() {
   });
 
   return transition((props, { position: [x, y, z], r, geometry }) => {
+    console.log(geometry);
     const materialToUse =
       geometry.id === 4 || geometry.id === 3 ? materialMITWPU : material;
     return (
-      <MemoizedGeometry
+      <Geometry
         position={[x * 3, y * 3, z]}
         material={materialToUse}
         geometry={geometry}
