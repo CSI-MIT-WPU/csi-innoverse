@@ -22,7 +22,7 @@ export default function Hero() {
             <N8AO aoRadius={3} distanceFalloff={3} intensity={1} />
           </EffectComposer>
         </Suspense>
-        {/* <Stars /> */}
+        <Stars />
         <Environment preset="dawn" />
         {/* <Rig /> */}
       </Canvas>
