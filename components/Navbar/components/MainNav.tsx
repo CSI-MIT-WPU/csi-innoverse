@@ -53,11 +53,7 @@ export function MainNav({
       <Link
         href=""
         className={cn(
-          "hidden md:block text-sm font-semibold  hover:text-primary transition-colors",
-          {
-            "text-muted-foreground": pathname !== "/forms",
-            "text-primary": pathname === "/forms",
-          }
+          "hidden md:block text-sm font-semibold  hover:text-primary transition-colors text-muted-foreground"
         )}
         passHref
       >

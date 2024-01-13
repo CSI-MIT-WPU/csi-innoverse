@@ -11,8 +11,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 export const metadata: Metadata = {
-  title: "CSI Forms",
-  description: "CSI MITWPU Forms",
+  title: "CSI MITWPU",
+  description: "CSI MITWPU INNOVERSE",
 };
 
 export default function RootLayout({

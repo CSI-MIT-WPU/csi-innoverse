@@ -43,14 +43,14 @@ export default function About() {
         collaboration!
       </p>
 
-      <h4 className="text-2xl md:text-3xl mx-auto text-center font-bold text-primary mt-10">
+      {/* <h4 className="text-2xl md:text-3xl mx-auto text-center font-bold text-primary mt-10">
         Our Sponsors
       </h4>
       <Card className={cn("w-fit mx-auto md:w-full min-w-80 mt-8")}>
         <CardContent className="grid gap-4">
           <div></div>
         </CardContent>
-      </Card>
+      </Card> */}
     </section>
   );
 }

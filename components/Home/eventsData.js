@@ -16,7 +16,7 @@ const events = [
   },
   {
     time: "22 February",
-    event: "Startup Summit",
+    event: "Startup Summit by HNIs",
     desc: "Dive into the entrepreneurial arena at our Mock Shark Tank event by Worqhat! Join aspiring innovators as they pitch their business ideas, face tough questions, and navigate the thrilling waters of startup scrutiny. Be part of the excitement and witness the next wave of innovation unfold!",
   },
   {

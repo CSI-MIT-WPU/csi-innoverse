@@ -36,14 +36,14 @@ const useStore = create((set) => {
       font,
       size: 2,
       height: 1,
-      curveSegments: 12,
+      curveSegments: 5,
       bevelEnabled: false,
     };
     const config = {
       font,
       size: 5,
       height: 2,
-      curveSegments: 12,
+      curveSegments: 5,
       bevelEnabled: true,
       bevelThickness: 0.01,
       bevelSize: 0.1,
@@ -143,7 +143,7 @@ function Rig() {
 function Stars(props) {
   const ref = useRef();
   const [sphere] = useState(() =>
-    random.inSphere(new Float32Array(5001), { radius: 20 })
+    random.inSphere(new Float32Array(2001), { radius: 20 })
   );
   useFrame((state, delta) => {
     ref.current.rotation.x -= delta / 10;
