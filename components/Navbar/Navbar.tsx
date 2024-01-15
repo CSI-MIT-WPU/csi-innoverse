@@ -34,7 +34,7 @@ export function Navbar() {
       <div className="ml-auto flex items-center space-x-4">
         {/* <ModeToggle /> */}
         <Image
-          src="/assets/mitwpu-logo.png"
+          src="/assets/mit-white.png"
           alt="MITWPU Logo"
           width={45}
           height={40}

@@ -78,4 +78,7 @@
     -webkit-appearance: none;
     margin: 0;
   }
+  .v-mask {
+    mask-image: url("/public/assets/gr.svg");
+  }
 }

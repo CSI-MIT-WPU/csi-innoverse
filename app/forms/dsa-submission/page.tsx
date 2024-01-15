@@ -114,21 +114,25 @@ const DsaSubmission = () => {
 
     // Points Calculation
     const currentDate = new Date();
-    const startDate = new Date("2024-01-09");
+    const questionRevealTime = new Date();
+    questionRevealTime.setHours(10, 0, 0, 0); // Assuming 10 am is the reveal time
 
     const question = questionsData.find(
       (q) => q.qNumber === data.questionNumber
     );
+
     if (question) {
       const timeDifferenceHours =
-        (currentDate.getTime() - startDate.getTime()) / (60 * 60 * 1000);
-      if (timeDifferenceHours <= 24) {
-        points = 5;
-      } else if (timeDifferenceHours <= 48) {
-        points = 3;
-      } else if (timeDifferenceHours <= 72) {
-        points = 1;
-      }
+        (currentDate.getTime() - questionRevealTime.getTime()) /
+        (60 * 60 * 1000);
+
+      // Calculate points based on the time difference
+      const initialPoints = 10;
+      const pointsReductionInterval = 3; // Reduce 1 point every 3 hours
+      const pointsReductionFactor = Math.floor(
+        timeDifferenceHours / pointsReductionInterval
+      );
+      points = Math.max(initialPoints - pointsReductionFactor, 0);
     }
 
     // Form Data preparation
