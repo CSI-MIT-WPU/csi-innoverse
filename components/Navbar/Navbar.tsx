@@ -36,6 +36,7 @@ export function Navbar() {
         <Image
           src="/assets/mit-white.png"
           alt="MITWPU Logo"
+          priority
           width={45}
           height={40}
           className="hidden md:block"

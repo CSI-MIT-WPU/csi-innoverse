@@ -7,7 +7,10 @@ export default function Hero2() {
         autoPlay
         muted
       >
-        <source src="/assets/03.webm" type="video/webm" />
+        <source
+          src="https://csi-forms.s3.ap-south-1.amazonaws.com/03.webm"
+          type="video/webm"
+        />
       </video>
       <div className="mask-gradient" />
       {/* <img src={svg} alt="something" /> */}
