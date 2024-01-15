@@ -1,5 +1,4 @@
 /* eslint-disable react/no-unescaped-entities */
-"use client";
 import { cn } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
 

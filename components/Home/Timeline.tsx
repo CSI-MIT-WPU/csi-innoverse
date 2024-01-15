@@ -1,4 +1,3 @@
-"use client";
 import events from "./eventsData";
 export default function Timeline() {
   return (
