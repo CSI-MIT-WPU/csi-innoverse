@@ -1,30 +1,20 @@
-import { promises as fs } from "fs";
-import path from "path";
-import { Metadata } from "next";
-import Image from "next/image";
+"use client";
 import { z } from "zod";
 
 import { columns } from "./components/columns";
 import { DataTable } from "./components/data-table";
 import { taskSchema } from "./data/schema";
+import { useQuery } from "@tanstack/react-query";
+import Loader from "../Home/Loader";
 
-export const metadata: Metadata = {
-  title: "Tasks",
-  description: "A task and issue tracker build using Tanstack Table.",
-};
+export default function StatsTable() {
+  // const tasks = await getTasks();
+  const { data, isSuccess, isLoading, isError, error } = useQuery<any>({
+    queryKey: ["pointsData"],
+    queryFn: () => fetch("/api/dsa-submission").then((res) => res.json()),
+  });
 
-// Simulate a database read for tasks.
-async function getTasks() {
-  const data = await fs.readFile(
-    path.join(process.cwd(), "components/StatsTable/data/tasks.json")
-  );
-
-  const tasks = JSON.parse(data.toString());
-  return z.array(taskSchema).parse(tasks);
-}
-
-export default async function StatsTable() {
-  const tasks = await getTasks();
+  isError && console.log(error);
 
   return (
     <>
@@ -34,7 +24,8 @@ export default async function StatsTable() {
             <UserNav />
           </div> */}
         </div>
-        <DataTable data={tasks} columns={columns} />
+        {isLoading && <Loader />}
+        {isSuccess && <DataTable data={data} columns={columns} />}
       </div>
     </>
   );

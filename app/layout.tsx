@@ -8,6 +8,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import TanstackProvider from "./providers/TanstackProvider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 export const metadata: Metadata = {
@@ -28,19 +29,21 @@ export default function RootLayout({
           inter.variable
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Toaster />
-          <Navbar />
-          {children}
-          <Footer />
-        </ThemeProvider>
-        <Analytics />
-        <SpeedInsights />
+        <TanstackProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Toaster />
+            <Navbar />
+            {children}
+            <Footer />
+          </ThemeProvider>
+          <Analytics />
+          <SpeedInsights />
+        </TanstackProvider>
       </body>
     </html>
   );

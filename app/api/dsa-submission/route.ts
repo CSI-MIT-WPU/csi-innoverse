@@ -152,15 +152,16 @@ export async function GET(req: Request, res: Response) {
       }, {} as Record<string, GroupedSubmissions>);
 
     // Convert the grouped submissions to an array
-    const submissionsArray: GroupedSubmissions[] =
-      Object.values(groupedSubmissions);
+    const submissionsArray: GroupedSubmissions[] = Object.values(
+      groupedSubmissions
+    ).sort((a, b) => b.points - a.points);
 
     return new NextResponse(JSON.stringify(submissionsArray), {
       status: 200,
     });
   } catch (error) {
     console.error("Error fetching submissions:", error);
-    return new NextResponse("Failed to fetch submissions", {
+    return new NextResponse(`Failed to fetch submissions ${error}`, {
       status: 500,
     });
   }

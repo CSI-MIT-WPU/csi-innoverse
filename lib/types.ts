@@ -26,19 +26,7 @@ export const DsaFormSchema = z.object({
   memory: z.number().refine((value) => value > 0, {
     message: "Memory must be greater than 0",
   }),
-  code: z
-    .string()
-    .min(1)
-    .refine(
-      (value) => {
-        // Use DOMPurify to sanitize the code and check if it's safe
-        const sanitizedCode = DOMPurify.sanitize(value);
-        return sanitizedCode === value; // If they are equal, it means the code is safe
-      },
-      {
-        message: "Invalid code entered",
-      }
-    ),
+  code: z.string().min(1),
   image: z.any(),
   points: z.number().default(0),
 });
