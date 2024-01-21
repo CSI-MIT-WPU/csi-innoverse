@@ -1,42 +1,38 @@
+/* eslint-disable react/no-unescaped-entities */
 import StatsTable from "@/components/StatsTable/page";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Link from "next/link";
+import { getTodaysQuestion, TQuestion } from "./questionsData";
 
 export default function Home() {
+  const qData = getTodaysQuestion()[0];
   return (
     <main className="w-full px-4 md:px-12">
       <div className="grid gap-4 grid-cols-2 my-10">
-        <Card className="md:w-1/2 hover:border-slate-400 mx-auto">
-          <Link
-            href="/forms/dsa-submission"
-            className="font-bold text-xl hover:cursor-pointer"
-          >
-            <CardHeader className="flex flex-row items-center justify-between  pb-1"></CardHeader>
-            <CardContent className="text-center text-sm md:text-base">
-              <div className="text-sm font-normal text-muted-foreground">
-                Click here for
-              </div>
-              DSA Submission Form
-            </CardContent>
-          </Link>
-        </Card>
-        <Card className="md:w-1/2 hover:border-slate-400 mx-auto hover:cursor-pointer">
-          <Link href="/forms/rec-form" className="font-bold text-xl ">
-            <CardHeader className="flex flex-row items-center justify-between  pb-1"></CardHeader>
-            <CardContent className="text-center text-sm md:text-base">
-              <div className="text-sm font-normal text-muted-foreground">
-                Click here for
-              </div>
-              Recruitment Form
-            </CardContent>
-          </Link>
+        <Card className="md:w-3/4 hover:border-slate-400 mx-auto col-span-2 mb-8">
+          <CardHeader className="pb-1 font-bold text-xl">
+            Today's DSA Question
+          </CardHeader>
+          <CardContent className="flex flex-col md:flex-row justify-between text-center text-sm md:text-base mt-4">
+            <div className="text-sm font-normal text-muted-foreground">
+              <p className="mb-1">
+                <span className="mr-2">{qData.qNo.toString()}</span>
+                {qData.question}
+              </p>
+              <Link
+                href={qData.link.toString()}
+                className="font-semibold text-foreground hover:underline"
+              >
+                Link to Question
+              </Link>
+            </div>
+            <Link href="/forms/dsa-submission">
+              <Button variant="outline" className="mt-4 md:mt-0 font-bold">
+                Submission Form
+              </Button>
+            </Link>
+          </CardContent>
         </Card>
       </div>
       <hr />

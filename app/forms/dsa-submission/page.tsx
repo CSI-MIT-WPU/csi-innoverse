@@ -221,7 +221,6 @@ const DsaSubmission = () => {
             </CardTitle>
             <CardDescription></CardDescription>
           </CardHeader>
-
           <CardContent>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)}>
