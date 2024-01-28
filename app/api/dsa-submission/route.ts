@@ -1,9 +1,10 @@
 import { DsaFormSchema, TDsaFormSchema } from "@/lib/types";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { connectToDB } from "@/app/utils/database";
 import DsaSubmission from "@/app/models/dsa-submission";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import sharp from "sharp";
+import { useSearchParams } from "next/navigation";
 
 const s3: S3Client = new S3Client({
   region: process.env.AWS_REGION || "",
@@ -23,7 +24,7 @@ export async function POST(request: Request) {
   const otherData: { [key: string]: string | number | File } = {
     code: "",
     email: "",
-    // csiId: 0,
+    phoneNumber: "",
     name: "",
     questionNumber: 0,
     time: 0,
@@ -45,7 +46,9 @@ export async function POST(request: Request) {
     }
   }
 
+  console.log(otherData.phoneNumber);
   const result = DsaFormSchema.safeParse(otherData);
+  console.log(result);
 
   if (result.success) {
     await connectToDB();
@@ -59,6 +62,7 @@ export async function POST(request: Request) {
       newDsaSubmission = new DsaSubmission({
         name: otherData.name,
         email: otherData.email, // Access values directly from otherData
+        phoneNumber: otherData.phoneNumber,
         questionNumber: otherData.questionNumber,
         time: otherData.time,
         memory: otherData.memory,
@@ -66,6 +70,7 @@ export async function POST(request: Request) {
         image: fileLocation,
         points: otherData.points,
       });
+      console.log(newDsaSubmission);
       await newDsaSubmission.save();
       return new NextResponse(JSON.stringify(newDsaSubmission), {
         status: 201,
@@ -116,52 +121,32 @@ const processAndUploadImage = async (image: File, s3: S3Client) => {
   return { uploadResult, fileLocation };
 };
 
-interface GroupedSubmissions {
-  email: string;
-  points: number;
-  name: string;
-  submissions: TDsaFormSchema[];
-}
-
-export async function GET(req: Request, res: Response) {
+export async function GET(req: NextRequest, res: Response) {
   await connectToDB();
 
   try {
-    const allSubmissions: TDsaFormSchema[] = await DsaSubmission.find({});
+    const email = req.nextUrl.searchParams.get("email");
+    const questionNumber = req.nextUrl.searchParams.get("questionNumber");
+    // Check if the user has already submitted for the given question number
+    const userHasSubmitted = await DsaSubmission.exists({
+      email: email,
+      questionNumber: parseInt(questionNumber as string, 10),
+    });
 
-    // Group submissions by email and calculate points
-    const groupedSubmissions: Record<string, GroupedSubmissions> =
-      allSubmissions.reduce((result, submission) => {
-        const { email, points, name } = submission;
+    if (userHasSubmitted) {
+      // User has already submitted, you can return the appropriate response
+      return new NextResponse(JSON.stringify({ alreadySubmitted: true }), {
+        status: 200,
+      });
+    }
 
-        result[email] = result[email] || {
-          name: "",
-          email,
-          points: 0,
-          submissions: [],
-        };
-
-        if (!result[email]?.name || result[email]?.name !== name) {
-          result[email].name = name;
-        }
-
-        result[email].points += points;
-        result[email].submissions.push(submission);
-
-        return result;
-      }, {} as Record<string, GroupedSubmissions>);
-
-    // Convert the grouped submissions to an array
-    const submissionsArray: GroupedSubmissions[] = Object.values(
-      groupedSubmissions
-    ).sort((a, b) => b.points - a.points);
-
-    return new NextResponse(JSON.stringify(submissionsArray), {
+    // User has not submitted for the given question number
+    return new NextResponse(JSON.stringify({ alreadySubmitted: false }), {
       status: 200,
     });
   } catch (error) {
-    console.error("Error fetching submissions:", error);
-    return new NextResponse(`Failed to fetch submissions ${error}`, {
+    console.error("Error checking user submission:", error);
+    return new NextResponse(`Failed to check user submission ${error}`, {
       status: 500,
     });
   }

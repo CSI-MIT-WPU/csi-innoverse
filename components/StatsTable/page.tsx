@@ -11,7 +11,7 @@ export default function StatsTable() {
   // const tasks = await getTasks();
   const { data, isSuccess, isLoading, isError, error } = useQuery<any>({
     queryKey: ["pointsData"],
-    queryFn: () => fetch("/api/dsa-submission").then((res) => res.json()),
+    queryFn: () => fetch("/api/scores-fetch").then((res) => res.json()),
   });
 
   isError && console.log(error);

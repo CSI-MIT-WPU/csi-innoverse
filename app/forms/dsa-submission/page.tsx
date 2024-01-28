@@ -36,6 +36,24 @@ import {
 } from "@/components/ui/select";
 import { getRecentQuestions } from "./data";
 
+const checkUserSubmission = async (
+  email: string,
+  questionNumber: number
+): Promise<boolean> => {
+  try {
+    const response = await fetch(
+      `/api/dsa-submission?email=${email}&questionNumber=${questionNumber}`
+    );
+    if (response.ok) {
+      const responseData = await response.json();
+      return responseData.alreadySubmitted; // true if already submitted, false otherwise
+    }
+  } catch (error) {
+    console.error("Error checking user submission:", error);
+  }
+  return false;
+};
+
 const DsaSubmission = () => {
   const { toast } = useToast();
   const router = useRouter();
@@ -47,7 +65,7 @@ const DsaSubmission = () => {
     defaultValues: {
       name: "",
       email: "",
-      // csiId: 0,
+      phoneNumber: "",
       questionNumber: 0,
       time: 0,
       memory: 0,
@@ -112,39 +130,44 @@ const DsaSubmission = () => {
       }
     }
 
-    // Points Calculation
-    const currentDate = new Date();
-    const questionRevealTime = new Date();
-    questionRevealTime.setHours(10, 0, 0, 0); // Assuming 10 am is the reveal time
-
-    const question = questionsData.find(
-      (q) => q.qNumber === data.questionNumber
+    const userHasSubmittedForQuestion = await checkUserSubmission(
+      data.email,
+      data.questionNumber
     );
 
-    if (question) {
-      const timeDifferenceHours =
-        (currentDate.getTime() - questionRevealTime.getTime()) /
-        (60 * 60 * 1000);
+    if (!userHasSubmittedForQuestion) {
+      // Points Calculation
+      const currentDate = new Date();
+      const questionRevealTime = new Date();
+      questionRevealTime.setHours(18, 0, 0, 0); //6pm
 
-      // Calculate points based on the time difference
-      const initialPoints = 10;
-      const pointsReductionInterval = 3; // Reduce 1 point every 3 hours
-      const pointsReductionFactor = Math.floor(
-        timeDifferenceHours / pointsReductionInterval
-      );
-      points = Math.max(initialPoints - pointsReductionFactor, 0);
+      const question = questionsData.find((q) => q.qNo === data.questionNumber);
+
+      if (question) {
+        const timeDifferenceHours =
+          (currentDate.getTime() - questionRevealTime.getTime()) /
+          (60 * 60 * 1000);
+
+        // Calculate points based on the time difference
+        const initialPoints = 10;
+        const pointsReductionInterval = 3; // Reduce 1 point every 3 hours
+        const pointsReductionFactor = Math.floor(
+          timeDifferenceHours / pointsReductionInterval
+        );
+        points = Math.max(initialPoints - pointsReductionFactor, 0);
+      }
     }
 
     // Form Data preparation
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("email", data.email);
-    // formData.append("csiId", String(data.csiId));
     formData.append("questionNumber", String(data.questionNumber));
     formData.append("time", String(data.time));
     formData.append("memory", String(data.memory));
     formData.append("points", String(points));
     formData.append("code", data.code);
+    formData.append("phoneNumber", data.phoneNumber);
 
     if (imageFile) {
       formData.append("image", imageFile);
@@ -254,23 +277,19 @@ const DsaSubmission = () => {
                     </FormItem>
                   )}
                 />
-                {/* <FormField
+                <FormField
                   control={form.control}
-                  name="csiId"
+                  name="phoneNumber"
                   render={({ field }) => (
                     <FormItem className="mt-2">
-                      <FormLabel>CSI Id</FormLabel>
+                      <FormLabel>Phone Number</FormLabel>
                       <FormControl>
-                        <Input
-                          {...field}
-                          {...form.register("csiId", { valueAsNumber: true })}
-                          type="number"
-                        />
+                        <Input {...field} type="tel" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
-                /> */}
+                />
                 <FormField
                   control={form.control}
                   name="questionNumber"
@@ -292,11 +311,11 @@ const DsaSubmission = () => {
                         <SelectContent>
                           {questionsData.map((question) => (
                             <SelectItem
-                              key={question.qNumber}
-                              value={question.qNumber.toString()}
+                              key={question.qNo}
+                              value={question.qNo.toString()}
                             >
-                              Day {question.day} Question{" "}
-                              {question.qNumber.toString()}
+                              Day {question.id} Question{" "}
+                              {question.qNo.toString()}
                             </SelectItem>
                           ))}
                         </SelectContent>

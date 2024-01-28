@@ -11,12 +11,27 @@ export const DsaFormSchema = z.object({
   email: z
     .string()
     .email()
-    .refine((email) => email.endsWith("mitwpu.edu.in"), {
-      message: "Please enter a valid email address",
-    }),
-  // csiId: z.number().refine((value) => value > 0, {
-  //   message: "CSI ID must be greater than 0",
-  // }),
+    .refine(
+      (email) => {
+        const allowedDomains = [
+          "mitwpu.edu.in",
+          "coep.ac.in",
+          "pict.edu",
+          "dypiemr.ac.in",
+          "viit.ac.in",
+          "cumminscollege.in",
+          "mmcoe.edu.in",
+        ];
+        const domain = email.split("@")[1];
+        return allowedDomains.includes(domain);
+      },
+      {
+        message: "Please enter a valid email address",
+      }
+    ),
+  phoneNumber: z.string().refine((value) => /^\d{10}$/.test(value), {
+    message: "Please enter a valid 10-digit phone number",
+  }),
   questionNumber: z.number().refine((value) => value > 0, {
     message: "Question number must be greater than 0",
   }),

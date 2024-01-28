@@ -14,7 +14,7 @@ interface qData {
 
 export default function Home() {
   const qData = getTodaysQuestion();
-  console.log(qData);
+  // console.log(qData);
   return (
     <main className="w-full px-4 md:px-12">
       <div className="grid gap-4 grid-cols-2 my-10">
@@ -25,16 +25,20 @@ export default function Home() {
           <CardContent className="flex flex-col md:flex-row justify-between text-center text-sm md:text-base mt-4">
             <div className="text-sm font-normal text-muted-foreground">
               <p className="mb-1">
-                {/* <span className="mr-2">{qData?.qNo.toString()}</span>
-                {qData?.question} */}
-                The first question will be revealed on 1st Feburary 2024
+                {/* <span className="mr-2">
+                  Question Number: {qData?.qNo.toString()}
+                </span> */}
+                {/* {qData?.question} */}
+                The first question will be revealed on 1st Feburary 2024 at 6pm
               </p>
-              {/* <Link
+              {/* <a
+                rel="noopener noreferrer"
                 href={qData?.link.toString() || ""}
+                target="_blank"
                 className="font-semibold text-foreground hover:underline"
               >
-                Link to Question
-              </Link> */}
+                Click Here for question link
+              </a> */}
             </div>
             <Link href="/forms/dsa-submission">
               <Button variant="outline" className="mt-4 md:mt-0 font-bold">

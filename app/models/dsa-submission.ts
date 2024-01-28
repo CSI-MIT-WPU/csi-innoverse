@@ -9,10 +9,10 @@ const DsaSubSchema = new Schema({
     type: String,
     required: [true, "Email is required!"],
   },
-  // csiId: {
-  //   type: Number,
-  //   required: [true, "CSI Id is required"],
-  // },
+  phoneNumber: {
+    type: String,
+    required: [true, "Phone Number is required"],
+  },
   questionNumber: {
     type: Number,
     required: [true, "Question Number is required"],
