@@ -8,7 +8,7 @@ export default function About() {
       <div className="w-full flex justify-center">
         <a
           href="https://chat.whatsapp.com/FpuL78HELIv4wLAcYwWOYf"
-          className="font-semibold lg:hidden hover:cursor-pointer hover:underline mb-5"
+          className=" lg:hidden hover:cursor-pointer text-sm underline-offset-2 underline mb-5"
         >
           Click here to join DSA Challenge
         </a>

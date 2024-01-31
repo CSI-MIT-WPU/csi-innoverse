@@ -44,7 +44,7 @@ export default function Home() {
               <a href="https://chat.whatsapp.com/FpuL78HELIv4wLAcYwWOYf">
                 <Button
                   variant="outline"
-                  className="mt-4 md:mt-0 font-bold mb-2 mr-2"
+                  className="mt-4 md:mt-0 text-sm mb-2 mr-2"
                 >
                   Join Whatsapp Group
                 </Button>
