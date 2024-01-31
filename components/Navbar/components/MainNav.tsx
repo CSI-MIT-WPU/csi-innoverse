@@ -50,15 +50,6 @@ export function MainNav({
       >
         DSA Challenge
       </Link>
-      <Link
-        href=""
-        className={cn(
-          "hidden md:block text-sm font-semibold  hover:text-primary transition-colors text-muted-foreground"
-        )}
-        passHref
-      >
-        Registration Form
-      </Link>
     </div>
   );
 }
