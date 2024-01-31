@@ -40,11 +40,21 @@ export default function Home() {
                 Click Here for question link
               </a> */}
             </div>
-            <Link href="/forms/dsa-submission">
-              <Button variant="outline" className="mt-4 md:mt-0 font-bold">
-                Submission Form
-              </Button>
-            </Link>
+            <div>
+              <a href="https://chat.whatsapp.com/FpuL78HELIv4wLAcYwWOYf">
+                <Button
+                  variant="outline"
+                  className="mt-4 md:mt-0 font-bold mb-2 mr-2"
+                >
+                  Join Whatsapp Group
+                </Button>
+              </a>
+              <Link href="/forms/dsa-submission">
+                <Button variant="outline" className="mt-4 md:mt-0 font-bold">
+                  Submission Form
+                </Button>
+              </Link>
+            </div>
           </CardContent>
         </Card>
       </div>
