@@ -32,14 +32,12 @@ export default function Home() {
               ) : (
                 <>
                   <p className="mb-1">
-                    <span className="mr-2">
-                      Question Number: {qData?.qNo.toString()}
-                    </span>
-                    {qData?.question}
+                    <span className="mr-2">Question Number: 9</span>
+                    Palindrome Number
                   </p>
                   <a
                     rel="noopener noreferrer"
-                    href={qData?.link.toString() || ""}
+                    href="https://leetcode.com/problems/palindrome-number/description/"
                     target="_blank"
                     className="font-semibold text-foreground hover:underline"
                   >
