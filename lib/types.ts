@@ -41,6 +41,9 @@ export const DsaFormSchema = z.object({
   memory: z.number().refine((value) => value > 0, {
     message: "Memory must be greater than 0",
   }),
+  language: z
+    .string()
+    .min(1, { message: "Please Enter a valid programming language" }),
   code: z.string().min(1),
   image: z.any(),
   points: z.number().default(0),

@@ -25,6 +25,10 @@ const DsaSubSchema = new Schema({
     type: Number,
     required: [true, "Memory is required"],
   },
+  language: {
+    type: String,
+    required: [true, "Language Used is required"],
+  },
   code: {
     type: String,
     required: [true, "Code is required"],

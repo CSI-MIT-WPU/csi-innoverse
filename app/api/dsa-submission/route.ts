@@ -23,6 +23,7 @@ export async function POST(request: Request) {
   // return;
   const otherData: { [key: string]: string | number | File } = {
     code: "",
+    language: "",
     email: "",
     phoneNumber: "",
     name: "",
@@ -66,6 +67,7 @@ export async function POST(request: Request) {
         questionNumber: otherData.questionNumber,
         time: otherData.time,
         memory: otherData.memory,
+        language: otherData.language,
         code: otherData.code,
         image: fileLocation,
         points: otherData.points,

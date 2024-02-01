@@ -136,28 +136,43 @@ export const questionsData: TQuestion[] = [
 
 export const getTodaysQuestion = () => {
   const currentDate = new Date();
-  const startDate = new Date("2024-01-31");
+  const startDate = new Date("2024-02-01");
 
   // Set the target time for 6 PM
   const targetTime = new Date(currentDate);
   targetTime.setHours(18, 0, 0, 0);
-
   // Check if the current time is before 6 PM
   const isBefore6PM = currentDate < targetTime;
 
-  // Adjust the currentDate based on the time comparison
-  const adjustedDate = isBefore6PM
-    ? currentDate
-    : new Date(currentDate.getTime() - 24 * 60 * 60 * 1000);
-
   const dayDifference = Math.floor(
-    (adjustedDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000)
+    (currentDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000)
   );
 
-  const todaysQuestion = questionsData.find(
-    (question) => question.id === dayDifference + 1
-  );
+  const recentQuestions = [];
 
-  // console.log(todaysQuestion);
-  return todaysQuestion;
+  // Loop through previous days and add their questions if it's after 6 PM
+  for (let i = 0; i < dayDifference; i++) {
+    const questionId = i + 1; // Assuming questions start from day 1
+    const question = questionsData.find((q) => q.id === questionId);
+
+    if (question) {
+      recentQuestions.push(question);
+    }
+  }
+
+  // Check if it's after 6 PM and add today's question
+  if (!isBefore6PM) {
+    const todayQuestionId = dayDifference + 1; // Assuming today's question has an ID of dayDifference + 1
+    const todayQuestion = questionsData.find((q) => q.id === todayQuestionId);
+
+    if (todayQuestion) {
+      recentQuestions.push(todayQuestion);
+    }
+  }
+  const lastQuestion =
+    recentQuestions.length > 0
+      ? recentQuestions[recentQuestions.length - 1]
+      : null;
+  // console.log(lastQuestion);
+  return lastQuestion;
 };

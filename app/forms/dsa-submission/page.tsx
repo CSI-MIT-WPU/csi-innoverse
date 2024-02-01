@@ -69,6 +69,7 @@ const DsaSubmission = () => {
       questionNumber: 0,
       time: 0,
       memory: 0,
+      language: "",
       code: "",
       image: undefined,
     },
@@ -168,6 +169,7 @@ const DsaSubmission = () => {
     formData.append("points", String(points));
     formData.append("code", data.code);
     formData.append("phoneNumber", data.phoneNumber);
+    formData.append("language", data.language);
 
     if (imageFile) {
       formData.append("image", imageFile);
@@ -353,6 +355,19 @@ const DsaSubmission = () => {
                           {...form.register("memory", { valueAsNumber: true })}
                           type="number"
                         />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="language"
+                  render={({ field }) => (
+                    <FormItem className="mt-2">
+                      <FormLabel>Language Used</FormLabel>
+                      <FormControl>
+                        <Input {...field} type="text" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>

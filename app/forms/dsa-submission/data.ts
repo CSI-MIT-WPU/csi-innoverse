@@ -138,30 +138,32 @@ export const getRecentQuestions = () => {
   // Check if the current time is before 6 PM
   const isBefore6PM = currentDate < targetTime;
 
-  // Adjust the currentDate based on the time comparison
-  const adjustedDate = isBefore6PM
-    ? currentDate
-    : new Date(currentDate.getTime() - 24 * 60 * 60 * 1000);
-
   const dayDifference = Math.floor(
-    (adjustedDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000)
+    (currentDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000)
   );
 
-  const recentQuestions = questionNos.filter(
-    (question) => question.id <= dayDifference + 1
-  );
+  const recentQuestions = [];
 
-  // Check if it's after 6 PM and add a new question number
-  if (!isBefore6PM) {
-    const newQuestionId = dayDifference + 2; // Assuming you add a new question every day
-    const newQuestion = questionNos.find(
-      (question) => question.id === newQuestionId
-    );
+  // Loop through previous days and add their questions if it's after 6 PM
+  for (let i = 0; i < dayDifference; i++) {
+    const questionId = i + 1; // Assuming questions start from day 1
+    const question = questionNos.find((q) => q.id === questionId);
 
-    if (newQuestion) {
-      recentQuestions.push(newQuestion);
+    if (question) {
+      recentQuestions.push(question);
     }
   }
 
+  // Check if it's after 6 PM and add today's question
+  if (!isBefore6PM) {
+    const todayQuestionId = dayDifference + 1; // Assuming today's question has an ID of dayDifference + 1
+    const todayQuestion = questionNos.find((q) => q.id === todayQuestionId);
+
+    if (todayQuestion) {
+      recentQuestions.push(todayQuestion);
+    }
+  }
+
+  // console.log(recentQuestions);
   return recentQuestions;
 };
