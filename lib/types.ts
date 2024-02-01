@@ -21,6 +21,7 @@ export const DsaFormSchema = z.object({
           "viit.ac.in",
           "cumminscollege.in",
           "mmcoe.edu.in",
+          "coeptech.ac.in",
         ];
         const domain = email.split("@")[1];
         return allowedDomains.includes(domain);
