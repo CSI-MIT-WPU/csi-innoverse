@@ -1,9 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
+"use client";
 import StatsTable from "@/components/StatsTable/page";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Link from "next/link";
 import { getTodaysQuestion, TQuestion } from "./questionsData";
+import { useEffect, useState } from "react";
 
 interface qData {
   id: number;
@@ -13,7 +15,11 @@ interface qData {
 }
 
 export default function Home() {
-  const qData = getTodaysQuestion();
+  const [qData, setqData] = useState<TQuestion | null>();
+
+  useEffect(() => {
+    setqData(getTodaysQuestion());
+  }, []);
   // console.log(qData);
   return (
     <main className="w-full px-4 md:px-12">
