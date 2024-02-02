@@ -137,6 +137,7 @@ export const questionsData: TQuestion[] = [
 export const getTodaysQuestion = () => {
   const currentDate = new Date();
   const startDate = new Date("2024-02-01");
+  startDate.setHours(18, 0, 0, 0);
 
   // Set the target time for 6 PM
   const targetTime = new Date(currentDate);
@@ -145,10 +146,11 @@ export const getTodaysQuestion = () => {
   const isBefore6PM = currentDate < targetTime;
 
   const dayDifference = Math.floor(
-    (currentDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000)
+    (targetTime.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000)
   );
 
   const recentQuestions = [];
+  // console.log(targetTime.toDateString());
 
   // Loop through previous days and add their questions if it's after 6 PM
   for (let i = 0; i < dayDifference; i++) {
@@ -173,6 +175,7 @@ export const getTodaysQuestion = () => {
     recentQuestions.length > 0
       ? recentQuestions[recentQuestions.length - 1]
       : null;
-  // console.log(lastQuestion);
+
+  console.log(lastQuestion);
   return lastQuestion;
 };

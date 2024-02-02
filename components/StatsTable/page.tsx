@@ -20,7 +20,6 @@ export default function StatsTable() {
 
     fetch("/api/scores-fetch", {
       headers: {
-        "Cache-Control": "no-store",
         cache: "no-store",
       },
     })
