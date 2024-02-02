@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
+export const dynamic = "force-dynamic";
 import StatsTable from "@/components/StatsTable/page";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -31,7 +32,9 @@ export default function Home() {
           <CardContent className="flex flex-col md:flex-row justify-between text-center text-sm md:text-base mt-4">
             <div className="text-sm font-normal text-muted-foreground">
               <p className="mb-1">
-                <span className="mr-2">Question Number: 9</span>
+                <span className="mr-2">
+                  Question Number: {qData?.qNo.toString()}
+                </span>
                 Palindrome Number
               </p>
               <a
