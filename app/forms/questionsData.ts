@@ -140,7 +140,7 @@ export const getTodaysQuestion = () => {
 
   // Set the target time for 6 PM
   const targetTime = new Date(currentDate);
-  targetTime.setHours(7, 0, 0, 0);
+  targetTime.setHours(18, 0, 0, 0);
   // Check if the current time is before 6 PM
   const isBefore6PM = currentDate < targetTime;
 
