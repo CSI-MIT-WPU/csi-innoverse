@@ -137,7 +137,6 @@ export const questionsData: TQuestion[] = [
 export const getTodaysQuestion = () => {
   const currentDate = new Date();
   const startDate = new Date("2024-02-01");
-  startDate.setHours(18, 0, 0, 0);
 
   // Set the target time for 6 PM
   const targetTime = new Date(currentDate);
