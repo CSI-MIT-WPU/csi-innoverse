@@ -139,15 +139,11 @@ const DsaSubmission = () => {
     if (!userHasSubmittedForQuestion) {
       // Points Calculation
       const currentDate = new Date();
-      const questionRevealTime = new Date();
-      // questionRevealTime.setDate(questionRevealTime.getDate() - 1);
-      questionRevealTime.setHours(18, 0, 0, 0); //6pm
-
       const question = questionsData.find((q) => q.qNo === data.questionNumber);
 
       if (question) {
         const timeDifferenceHours =
-          (currentDate.getTime() - questionRevealTime.getTime()) /
+          (currentDate.getTime() - question.revealDate.getTime()) /
           (60 * 60 * 1000);
 
         // Calculate points based on the time difference

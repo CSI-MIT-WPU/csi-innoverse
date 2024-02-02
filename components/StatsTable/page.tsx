@@ -3,32 +3,10 @@ export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
 import { columns } from "./components/columns";
 import { DataTable } from "./components/data-table";
-import { useQuery } from "@tanstack/react-query";
 import Loader from "../Home/Loader";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function StatsTable() {
-  // const tasks = await getTasks();
-  // const data = useRef({});
-  // const [isLoading, setIsLoading] = useState(false);
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   fetch("/api/scores-fetch")
-  //     .then((res) => {
-  //       if (!res.ok) {
-  //         throw new Error(`HTTP error! Status: ${res.status}`);
-  //       }
-  //       return res.json();
-  //     })
-  //     .then((jsonData) => {
-  //       data.current = jsonData;
-  //       setIsLoading(false);
-  //     })
-  //     .catch((err) => {
-  //       console.error('Error fetching data:', err);
-  //       setIsLoading(false);
-  //     });
-  // }, []);
   const [data, setData] = useState<
     { name: string; email: string; points: number }[] | null
   >(null);
@@ -40,7 +18,12 @@ export default function StatsTable() {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch("/api/scores-fetch")
+    fetch("/api/scores-fetch", {
+      headers: {
+        "Cache-Control": "no-store",
+        cache: "no-store",
+      },
+    })
       .then((res) => res.json())
       .then((responseData) => {
         setData(responseData);

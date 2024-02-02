@@ -8,13 +8,6 @@ import Link from "next/link";
 import { getTodaysQuestion, TQuestion } from "./questionsData";
 import { useEffect, useState } from "react";
 
-interface qData {
-  id: number;
-  qNo: number;
-  question: string;
-  link: string;
-}
-
 export default function Home() {
   const [qData, setqData] = useState<TQuestion | null>();
 
