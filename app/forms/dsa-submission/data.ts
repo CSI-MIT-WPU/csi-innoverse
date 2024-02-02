@@ -160,7 +160,7 @@ export const getRecentQuestions = () => {
   const isBefore6PM = currentDate < targetTime;
 
   const dayDifference = Math.floor(
-    (currentDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000)
+    (targetTime.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000)
   );
 
   const recentQuestions = [];
