@@ -17,7 +17,8 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 import { labels } from "../data/data";
 import { taskSchema } from "../data/schema";
 

@@ -9,7 +9,8 @@ import { DataTableViewOptions } from "../components/data-table-view-options";
 
 import { priorities, statuses } from "../data/data";
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
-
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
 }

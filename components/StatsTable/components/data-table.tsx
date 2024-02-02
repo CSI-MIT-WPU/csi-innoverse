@@ -24,7 +24,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 import { DataTablePagination } from "../components/data-table-pagination";
 import { DataTableToolbar } from "../components/data-table-toolbar";
 
