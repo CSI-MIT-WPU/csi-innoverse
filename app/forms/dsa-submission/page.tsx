@@ -140,6 +140,7 @@ const DsaSubmission = () => {
       // Points Calculation
       const currentDate = new Date();
       const questionRevealTime = new Date();
+      questionRevealTime.setDate(questionRevealTime.getDate() - 1);
       questionRevealTime.setHours(18, 0, 0, 0); //6pm
 
       const question = questionsData.find((q) => q.qNo === data.questionNumber);
