@@ -29,10 +29,34 @@ export default function StatsTable() {
   //       setIsLoading(false);
   //     });
   // }, []);
-  const { data, isSuccess, isLoading, isError, error } = useQuery<any>({
-    queryKey: ["pointsData"],
-    queryFn: () => fetch("/api/scores-fetch").then((res) => res.json()),
-  });
+  const [data, setData] = useState<
+    { name: string; email: string; points: number }[] | null
+  >(null);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    fetch("/api/scores-fetch")
+      .then((res) => res.json())
+      .then((responseData) => {
+        setData(responseData);
+        setIsSuccess(true);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setIsError(true);
+        setIsLoading(false);
+      });
+  }, []);
+  // const { data, isSuccess, isLoading, isError, error } = useQuery<any>({
+  //   queryKey: ["pointsData"],
+  //   queryFn: () => fetch("/api/scores-fetch").then((res) => res.json()),
+  // });
 
   {
     isError && console.log(error);
@@ -47,7 +71,7 @@ export default function StatsTable() {
           </div> */}
         </div>
         {isLoading && <Loader />}{" "}
-        {isSuccess && <DataTable data={data} columns={columns} />}
+        {isSuccess && <DataTable data={data ?? []} columns={columns} />}
       </div>
     </>
   );
