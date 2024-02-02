@@ -31,20 +31,26 @@ export default function Home() {
           </CardHeader>
           <CardContent className="flex flex-col md:flex-row justify-between text-center text-sm md:text-base mt-4">
             <div className="text-sm font-normal text-muted-foreground">
-              <p className="mb-1">
-                <span className="mr-2">
-                  Question Number: {qData?.qNo.toString()}
-                </span>
-                Palindrome Number
-              </p>
-              <a
-                rel="noopener noreferrer"
-                href="https://leetcode.com/problems/palindrome-number/description/"
-                target="_blank"
-                className="font-semibold text-foreground hover:underline"
-              >
-                Click Here for question link
-              </a>
+              {qData === null ? (
+                <div>Some error occured</div>
+              ) : (
+                <>
+                  <p className="mb-1">
+                    <span className="mr-2">
+                      Question Number: {qData?.qNo.toString()}
+                    </span>
+                    {qData?.question}
+                  </p>
+                  <a
+                    rel="noopener noreferrer"
+                    href={qData?.link.toString()}
+                    target="_blank"
+                    className="font-semibold text-foreground hover:underline"
+                  >
+                    Click Here for question link
+                  </a>
+                </>
+              )}
             </div>
             <div>
               <a href="https://chat.whatsapp.com/FpuL78HELIv4wLAcYwWOYf">
