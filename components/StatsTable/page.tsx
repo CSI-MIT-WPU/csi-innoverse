@@ -1,57 +1,28 @@
 "use client";
 export const dynamic = "force-dynamic";
-export const fetchCache = "force-no-store";
 import { columns } from "./components/columns";
 import { DataTable } from "./components/data-table";
 import Loader from "../Home/Loader";
 import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 export default function StatsTable() {
-  const [data, setData] = useState<
-    { name: string; email: string; points: number }[] | null
-  >(null);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    setIsLoading(true);
-
-    fetch("/api/scores-fetch", {
-      headers: {
-        cache: "no-store",
-      },
-    })
-      .then((res) => res.json())
-      .then((responseData) => {
-        setData(responseData);
-        setIsSuccess(true);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-        setIsError(true);
-        setIsLoading(false);
-      });
-  }, []);
-  // const { data, isSuccess, isLoading, isError, error } = useQuery<any>({
-  //   queryKey: ["pointsData"],
-  //   queryFn: () => fetch("/api/scores-fetch").then((res) => res.json()),
-  // });
+  const { data, isSuccess, isLoading, isError, error } = useQuery<any>({
+    queryKey: ["pointsData"],
+    queryFn: () => fetch("/api/scores-fetch").then((res) => res.json()),
+    staleTime: 60,
+    refetchInterval: 5 * 60 * 60,
+    refetchIntervalInBackground: true,
+    refetchOnWindowFocus: true,
+  });
 
   {
-    isError && console.log(error);
+    isError && console.error(error);
   }
 
   return (
     <>
-      <div className="h-full flex-1 flex-col space-y-8 flex ">
-        <div className="flex items-center justify-between space-y-2">
-          {/* <div className="flex items-center space-x-2">
-            <UserNav />
-          </div> */}
-        </div>
+      <div className="h-full flex-1 flex-col space-y-8 flex">
         {isLoading && <Loader />}{" "}
         {isSuccess && <DataTable data={data ?? []} columns={columns} />}
       </div>

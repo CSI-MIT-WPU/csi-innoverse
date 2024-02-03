@@ -8,8 +8,6 @@ import { DataTableColumnHeader } from "./data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMedal } from "@fortawesome/free-solid-svg-icons";
-export const dynamic = "force-dynamic";
-export const fetchCache = "force-no-store";
 
 export const columns: ColumnDef<Task>[] = [
   {

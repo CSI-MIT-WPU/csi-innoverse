@@ -1,5 +1,4 @@
 import * as z from "zod";
-import DOMPurify from "isomorphic-dompurify";
 
 export const DsaFormSchema = z.object({
   name: z
@@ -48,6 +47,7 @@ export const DsaFormSchema = z.object({
   code: z.string().min(1),
   image: z.any(),
   points: z.number().default(0),
+  timestamp: z.any(),
 });
 
 export type TDsaFormSchema = z.infer<typeof DsaFormSchema>;

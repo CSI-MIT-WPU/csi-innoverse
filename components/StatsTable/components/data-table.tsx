@@ -24,8 +24,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-export const dynamic = "force-dynamic";
-export const fetchCache = "force-no-store";
 import { DataTablePagination } from "../components/data-table-pagination";
 import { DataTableToolbar } from "../components/data-table-toolbar";
 
@@ -70,7 +68,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="space-y-4 w-full">
+    <div className="space-y-4 w-full mt-3">
       <DataTableToolbar table={table} />
       <div className="rounded-md border">
         <Table>

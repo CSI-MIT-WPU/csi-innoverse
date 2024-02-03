@@ -12,8 +12,6 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
-export const dynamic = "force-dynamic";
-export const fetchCache = "force-no-store";
 interface DataTableViewOptionsProps<TData> {
   table: Table<TData>;
 }

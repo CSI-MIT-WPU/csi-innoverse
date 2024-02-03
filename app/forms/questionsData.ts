@@ -175,6 +175,6 @@ export const getTodaysQuestion = () => {
       ? recentQuestions[recentQuestions.length - 1]
       : null;
 
-  console.log(lastQuestion);
+  // console.log(lastQuestion);
   return lastQuestion;
 };
