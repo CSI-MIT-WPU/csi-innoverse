@@ -10,6 +10,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import TanstackProvider from "./providers/TanstackProvider";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { AxiomWebVitals } from "next-axiom";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 export const metadata: Metadata = {
@@ -30,6 +31,7 @@ export default function RootLayout({
           inter.variable
         )}
       >
+        <AxiomWebVitals />
         <TanstackProvider>
           <ThemeProvider
             attribute="class"
