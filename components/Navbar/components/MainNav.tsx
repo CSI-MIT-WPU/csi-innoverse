@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 
 export function MainNav({
   className,
@@ -49,6 +50,17 @@ export function MainNav({
         passHref
       >
         DSA Challenge
+      </Link>
+      <Link
+        href={cn({
+          "/#eventList": pathname !== "/",
+          "#eventList": pathname === "/",
+        })}
+        className={cn(
+          "hidden md:block text-sm font-semibold  hover:text-primary transition-colors text-muted-foreground"
+        )}
+      >
+        Register Now
       </Link>
     </div>
   );

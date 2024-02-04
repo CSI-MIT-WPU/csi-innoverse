@@ -1,23 +1,31 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
 import { cn } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
 
+const imgUrls = [
+  "https://csi-forms.s3.ap-south-1.amazonaws.com/worqhat_log.png",
+  "https://csi-forms.s3.ap-south-1.amazonaws.com/jetbrains_logo.png",
+  "https://csi-forms.s3.ap-south-1.amazonaws.com/aws_logo.png",
+  "https://csi-forms.s3.ap-south-1.amazonaws.com/googlecloud_vertical_logo.png",
+  "https://csi-forms.s3.ap-south-1.amazonaws.com/toastmasters_logo.png",
+  "https://csi-forms.s3.ap-south-1.amazonaws.com/canva_logo.png",
+];
+
+const imgUrls2 = [
+  "https://csi-forms.s3.ap-south-1.amazonaws.com/vit_logo.png",
+  "https://csi-forms.s3.ap-south-1.amazonaws.com/coep_logo.png",
+  "https://csi-forms.s3.ap-south-1.amazonaws.com/dpu_logo.png",
+];
+
 export default function About() {
   return (
     <>
-      <div className="w-full flex justify-center">
-        <a
-          href="https://chat.whatsapp.com/FpuL78HELIv4wLAcYwWOYf"
-          className=" lg:hidden hover:cursor-pointer text-sm underline-offset-2 underline mb-5"
-        >
-          Click here to join DSA Challenge
-        </a>
-      </div>
       <section className="flex flex-wrap mb-10">
         <h3 className="text-3xl md:text-5xl mx-auto font-bold text-primary">
           About Us
         </h3>
-        <p className="text-center my-3 text-xs md:text-base text-muted-foreground">
+        {/* <p className="text-center my-3 text-xs md:text-base text-muted-foreground">
           The Computer Society of India Student Chapter at MIT-WPU is a dynamic
           technical community. Our primary goal is to nurture both personal and
           professional growth through engaging projects and active involvement
@@ -31,7 +39,7 @@ export default function About() {
         </p>
         <h5 className="text-lg md:text-xl text-center mx-auto font-bold text-primary">
           CSI Presents Collaborate Socialize and Innovate
-        </h5>
+        </h5> */}
         <p className="text-center my-3 text-xs md:text-base text-muted-foreground">
           <span className="md:text-lg font-medium text-primary">
             CSI Innoverse{" "}
@@ -50,14 +58,42 @@ export default function About() {
           innovation and inspiration. Join us for an unforgettable blend of
           creativity, technology, and collaboration!
         </p>
-        {/* <h4 className="text-2xl md:text-3xl mx-auto text-center font-bold text-primary mt-10">
-        Our Sponsors
-      </h4>
-      <Card className={cn("w-fit mx-auto md:w-full min-w-80 mt-8")}>
-        <CardContent className="grid gap-4">
-          <div></div>
-        </CardContent>
-      </Card> */}
+        <div className="mx-auto">
+          <h4 className="text-2xl md:text-3xl mx-auto text-center font-bold text-primary mt-10">
+            In Collaboration with CSI Chapters of
+          </h4>
+          <Card className={cn("w-fit mx-auto md:w-fit min-w-80 mt-8")}>
+            <CardContent className="grid gap-x-12 mx-10 gap-y-5 grid-cols-1 md:grid-cols-3 mt-8 mb-4">
+              {imgUrls2.map((img) => {
+                return (
+                  <img
+                    className="h-20 min-w-fit my-auto mx-auto"
+                    key={img}
+                    src={img}
+                    alt="college logos"
+                  />
+                );
+              })}
+            </CardContent>
+          </Card>
+          <h4 className="text-2xl md:text-3xl mx-auto text-center font-bold text-primary mt-10">
+            Our Resource Partners
+          </h4>
+          <Card className={cn("w-fit mx-auto md:w-full min-w-80 mt-8")}>
+            <CardContent className="grid gap-x-10 gap-y-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mt-8 mb-4">
+              {imgUrls.map((img) => {
+                return (
+                  <img
+                    className="h-20 min-w-fit my-auto mx-auto"
+                    key={img}
+                    src={img}
+                    alt="brand logos"
+                  />
+                );
+              })}
+            </CardContent>
+          </Card>
+        </div>
       </section>
     </>
   );

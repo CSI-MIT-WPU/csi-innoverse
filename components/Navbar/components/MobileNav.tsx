@@ -55,6 +55,19 @@ export default function MobileNav() {
               DSA Challenge
             </Link>
           </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link
+              href={cn({
+                "/#eventList": pathname !== "/",
+                "#eventList": pathname === "/",
+              })}
+              className={cn(
+                "text-sm font-medium  hover:text-primary transition-colors text-muted-foreground"
+              )}
+            >
+              Register Now
+            </Link>
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

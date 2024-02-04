@@ -29,9 +29,9 @@ export const questionNos = [
   },
   {
     id: 5,
-    qNo: 263,
-    question: "Ugly Number",
-    link: "https://leetcode.com/problems/ugly-number/description/",
+    qNo: 605,
+    question: "Can Place Flowers",
+    link: "https://leetcode.com/problems/can-place-flowers/description/",
     revealDate: new Date("2024-02-05T18:00:00"),
   },
   {

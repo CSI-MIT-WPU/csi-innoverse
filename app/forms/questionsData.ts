@@ -32,9 +32,9 @@ export const questionsData: TQuestion[] = [
   },
   {
     id: 5,
-    qNo: 263,
-    question: "Ugly Number",
-    link: "https://leetcode.com/problems/ugly-number/description/",
+    qNo: 605,
+    question: "Can Place Flowers",
+    link: "https://leetcode.com/problems/can-place-flowers/description/",
   },
   {
     id: 6,
