@@ -18,8 +18,8 @@ export default function Timeline() {
               {desc}
             </p>
             {registerLink && (
-              <a href={registerLink}>
-                <Button variant="outline">Register</Button>
+              <a href={registerLink} target="_blank">
+                <Button variant="default">Register</Button>
               </a>
             )}
           </li>

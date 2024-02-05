@@ -13,7 +13,6 @@ export default function StatsTable() {
     staleTime: 60,
     refetchInterval: 5 * 60 * 60,
     refetchIntervalInBackground: true,
-    refetchOnWindowFocus: true,
   });
 
   {

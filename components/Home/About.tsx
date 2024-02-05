@@ -67,7 +67,7 @@ export default function About() {
               {imgUrls2.map((img) => {
                 return (
                   <img
-                    className="h-20 min-w-fit my-auto mx-auto"
+                    className="h-14 lg:h-20 min-w-fit my-auto mx-auto"
                     key={img}
                     src={img}
                     alt="college logos"
@@ -84,7 +84,7 @@ export default function About() {
               {imgUrls.map((img) => {
                 return (
                   <img
-                    className="h-20 min-w-fit my-auto mx-auto"
+                    className="h-14 lg:h-20 min-w-fit my-auto mx-auto"
                     key={img}
                     src={img}
                     alt="brand logos"
