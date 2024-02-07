@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <main className="w-full px-4 md:px-12">
       <h1 className="font-bold text-xl md:text-2xl text-center mt-10 font-mono">
-        CSI MITWPU DSA Challenge
+        CSI MIT-WPU DSA Challenge
       </h1>
       <p className="text-center font-light mt-1 text-sm text-muted-foreground">
         In Collaboration with
