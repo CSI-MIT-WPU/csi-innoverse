@@ -17,6 +17,13 @@ export default function Home() {
   // console.log(qData);
   return (
     <main className="w-full px-4 md:px-12">
+      <h1 className="font-bold text-xl md:text-2xl text-center mt-10 font-mono">
+        CSI MITWPU DSA Challenge
+      </h1>
+      <p className="text-center font-light mt-1 text-sm text-muted-foreground">
+        In Collaboration with
+        <br /> Career Development Centre, MIT-WPU
+      </p>
       <div className="grid gap-4 grid-cols-2 my-10">
         <Card className="md:w-3/4 hover:border-slate-400 mx-auto col-span-2 mb-8">
           <CardHeader className="pb-1 font-bold text-xl">

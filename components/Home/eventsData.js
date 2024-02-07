@@ -2,7 +2,7 @@ const events = [
   {
     time: "1 - 21 February",
     event: "21 Days DSA Challenge",
-    desc: "Elevate your coding skills as you delve into daily challenges focused on Data Structures and Algorithms. Join a vibrant community of learners and conquer coding hurdles",
+    desc: "In collaboration with Career Development Centre, MIT-WPU. Elevate your coding skills as you delve into daily challenges focused on Data Structures and Algorithms. Join a vibrant community of learners and conquer coding hurdles",
     registerLink: "https://chat.whatsapp.com/FpuL78HELIv4wLAcYwWOYf",
   },
   {
