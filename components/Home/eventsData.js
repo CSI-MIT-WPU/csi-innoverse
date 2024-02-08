@@ -32,10 +32,11 @@ const events = [
     time: "21 February 3:30pm",
     event: "Study Jams",
     desc: "Immerse yourself in our MERN Stack Study Jam, delving into the realms of MongoDB, Express.js, React, and Node.js. Uncover the intricacies of full-stack development through hands-on exercises, collaborative coding, and expert guidance. Elevate your skills and accelerate your journey in mastering the MERN stack. Join us for a transformative coding experience!",
+    registerLink: "https://forms.gle/Pe4CS2VfkZRWEbEf9",
   },
   {
     time: "22 February 1:30pm",
-    event: "Seminar and Felicitation",
+    event: "Seminar",
     desc: "Dive into the future of technology at our dynamic seminar – a transformative exploration of cutting-edge topics, fostering knowledge, collaboration, and actionable insights for innovation empowerment.",
     registerLink: "https://forms.gle/QMerSG5sB5jnk8XLA",
   },
@@ -44,6 +45,10 @@ const events = [
     event: "Public Speaking",
     desc: "Embark on a tech-filled journey as our expert speaker navigates the future of computer technology, unraveling the latest trends and innovations shaping our digital landscape.",
     registerLink: "https://forms.gle/ewaFZ37YRe1NvBmx6",
+  },
+  {
+    time: "23 February 4pm",
+    event: "Felicitation",
   },
 ];
 

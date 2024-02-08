@@ -51,13 +51,22 @@ export function MainNav({
       >
         DSA Challenge
       </Link>
+      <a
+        href="https://chat.whatsapp.com/KBJJiKX7opo3CxWmh1pfDE"
+        target="_blank"
+        className={cn(
+          "hidden md:block text-sm font-semibold  hover:text-primary transition-colors text-muted-foreground"
+        )}
+      >
+        Join Whatsapp Group
+      </a>
       <Link
         href={cn({
           "/#eventList": pathname !== "/",
           "#eventList": pathname === "/",
         })}
         className={cn(
-          "hidden md:block text-sm font-semibold  hover:text-primary transition-colors text-muted-foreground"
+          "hidden md:flex font-bold hover:underline transition-colors text-primary text-xl"
         )}
       >
         Register Now

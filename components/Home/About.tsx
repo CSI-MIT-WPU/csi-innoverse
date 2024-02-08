@@ -5,11 +5,11 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const imgUrls = [
   "https://csi-forms.s3.ap-south-1.amazonaws.com/worqhat_log.png",
-  "https://csi-forms.s3.ap-south-1.amazonaws.com/jetbrains_logo.png",
   "https://csi-forms.s3.ap-south-1.amazonaws.com/aws_logo.png",
-  "https://csi-forms.s3.ap-south-1.amazonaws.com/googlecloud_vertical_logo.png",
-  "https://csi-forms.s3.ap-south-1.amazonaws.com/toastmasters_logo.png",
+  "https://csi-forms.s3.ap-south-1.amazonaws.com/gcloud_dark_logo.png",
+  "https://csi-forms.s3.ap-south-1.amazonaws.com/jetbrains_logo.png",
   "https://csi-forms.s3.ap-south-1.amazonaws.com/canva_logo.png",
+  "https://csi-forms.s3.ap-south-1.amazonaws.com/toastmasters_logo.png",
 ];
 
 const imgUrls2 = [
@@ -79,7 +79,9 @@ export default function About() {
           <h4 className="text-2xl md:text-3xl mx-auto text-center font-bold text-primary mt-10">
             Our Resource Partners
           </h4>
-          <Card className={cn("w-fit mx-auto md:w-full min-w-80 mt-8")}>
+          <Card
+            className={cn("w-fit mx-auto md:w-full min-w-80 mt-8 bg-white")}
+          >
             <CardContent className="grid gap-x-10 gap-y-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mt-8 mb-4">
               {imgUrls.map((img) => {
                 return (
