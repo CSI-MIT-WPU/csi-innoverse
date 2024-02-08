@@ -56,6 +56,17 @@ export default function MobileNav() {
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
+            <a
+              href="https://chat.whatsapp.com/KBJJiKX7opo3CxWmh1pfDE"
+              target="_blank"
+              className={cn(
+                "text-sm font-medium  hover:text-primary transition-colors text-muted-foreground"
+              )}
+            >
+              Join Whatsapp Group
+            </a>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
             <Link
               href={cn({
                 "/#eventList": pathname !== "/",
