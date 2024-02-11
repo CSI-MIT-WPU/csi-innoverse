@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Link from "next/link";
 import { getTodaysQuestion, TQuestion } from "./questionsData";
 import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 export default function Home() {
   const [qData, setqData] = useState<TQuestion | null>();
@@ -14,6 +15,13 @@ export default function Home() {
   useEffect(() => {
     setqData(getTodaysQuestion());
   }, []);
+
+  const { data, isSuccess, isLoading, isError, error } = useQuery<any>({
+    queryKey: ["pointsData"],
+    queryFn: () => fetch("/api/scores-fetch").then((res) => res.json()),
+    staleTime: 0,
+  });
+
   // console.log(qData);
   return (
     <main className="w-full px-4 md:px-12">
@@ -72,7 +80,13 @@ export default function Home() {
       </div>
       <hr />
       <h3 className="text-2xl font-bold mt-3">DSA Scores</h3>
-      <StatsTable />
+      <StatsTable
+        data={data}
+        error={error}
+        isSuccess={isSuccess}
+        isLoading={isLoading}
+        isError={isError}
+      />
     </main>
   );
 }

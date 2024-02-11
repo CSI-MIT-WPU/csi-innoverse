@@ -3,18 +3,22 @@ export const dynamic = "force-dynamic";
 import { columns } from "./components/columns";
 import { DataTable } from "./components/data-table";
 import Loader from "../Home/Loader";
-import { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
 
-export default function StatsTable() {
-  const { data, isSuccess, isLoading, isError, error } = useQuery<any>({
-    queryKey: ["pointsData"],
-    queryFn: () => fetch("/api/scores-fetch").then((res) => res.json()),
-    staleTime: 60,
-    refetchInterval: 5 * 60 * 60,
-    refetchIntervalInBackground: true,
-  });
+interface StatsTableProps {
+  data: any;
+  isSuccess: boolean;
+  isLoading: boolean;
+  isError: boolean;
+  error: any;
+}
 
+export default function StatsTable({
+  data,
+  isSuccess,
+  isLoading,
+  isError,
+  error,
+}: StatsTableProps) {
   {
     isError && console.error(error);
   }
