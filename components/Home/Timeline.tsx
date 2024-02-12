@@ -14,9 +14,10 @@ export default function Timeline() {
               {time}
             </time>
             <h3 className="text-lg font-semibold text-primary">{event}</h3>
-            <p className="mb-4 text-sm md:text-base font-normal text-gray-500">
-              {desc}
-            </p>
+            <div
+              className="mb-4 text-sm md:text-base font-normal text-gray-500"
+              dangerouslySetInnerHTML={{ __html: desc || "" }}
+            />
             {registerLink && (
               <a href={registerLink} target="_blank">
                 <Button variant="default">Register</Button>

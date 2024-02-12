@@ -14,7 +14,7 @@ const events = [
   {
     time: "21 - 23 February 10:30am - 3:30pm",
     event: "Attractions",
-    desc: "Experience a day of innovation and inspiration at our event, showcasing groundbreaking startups, dynamic jamming sessions, a tech arcade, and impressive student projects. Join us for a diverse blend of creativity, technology, and collaboration, where live music and student achievements take center stage. Explore the future of tech and entrepreneurship in a vibrant atmosphere of ideas and excitement!",
+    desc: "Step into a world of immersive experiences and cutting-edge technology at our AR/VR stall, where reality meets innovation! <br> Experience a day of innovation and inspiration at our event, showcasing groundbreaking startups, a tech arcade, and impressive student projects.",
   },
   {
     time: "21 February 11:00am - 3:30pm",
@@ -25,7 +25,7 @@ const events = [
   {
     time: "21 February 1:00pm - 3:30pm",
     event: "Coding Relay",
-    desc: "Dive into the exhilarating world of coding with 'Coding Relay,' where tech enthusiasts unite for a thrilling event featuring a Tech Quiz, Debugging challenges, and Code exploration. Join us for an evening of collaborative learning and friendly competition in the heart of technology!",
+    desc: "Dive into the exhilarating world of coding with 'Coding Relay,' where tech enthusiasts unite for a thrilling event featuring a Tech Quiz, Debugging challenges, and Code exploration. Join us for an evening of collaborative learning and friendly competition in the heart of technology! <br> Round 1: Questions MCQs <br> Round 2: Quizes <br> Round 3: Team Round ",
     registerLink: "https://forms.gle/dvsB6xkTjiUDQMWYA",
   },
   {
