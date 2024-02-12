@@ -43,7 +43,7 @@ const events = [
   {
     time: "23 February 1:30pm - 4pm",
     event: "Public Speaking",
-    desc: "Embark on a tech-filled journey as our expert speaker navigates the future of computer technology, unraveling the latest trends and innovations shaping our digital landscape.",
+    desc: "Embark on a tech-filled journey as our expert speaker navigates the future of computer technology, unraveling the latest trends and innovations shaping our digital landscape.<br><br> Prepared Speech competition - mental health awareness: <br> Participants engage in breakout sessions where prepared speeches are delivered. Unevaluated for the competition and managed by CSI MIT-WPU.<br><br>Ice Breakers:<br>A mini session designed to break the ice among participants while they settle, fostering a comfortable and interactive environment.<br><br>Workshop on Impromptu Speaking by toastmaster international:<br>A workshop session focusing on developing impromptu speaking skills, allowing participants to think on their feet and articulate ideas spontaneously.<br><br>Table Topic competition :<br>Participants engage in Table Topic, a segment where they are given impromptu speaking topics to discuss or present briefly.",
     registerLink: "https://forms.gle/ewaFZ37YRe1NvBmx6",
   },
   {

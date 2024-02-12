@@ -15,7 +15,7 @@ export function MainNav({
       className={cn("flex items-center space-x-4 lg:space-x-6 ", className)}
       {...props}
     >
-      <div className="flex items-center space-x-2">
+      <div className="hidden md:flex items-center space-x-2">
         <Image
           src="/assets/csi-white-text.png"
           alt="CSI Logo"
@@ -23,7 +23,31 @@ export function MainNav({
           height={38}
           priority
         />
-        {/* <div className="font-bold md:text-2xl text-foreground">CSI Forms</div> */}
+        <Image
+          src="/assets/capgemini-logo.png"
+          alt="CSI Logo"
+          width={160}
+          height={40}
+          priority
+          className="mt-2"
+        />
+      </div>
+      <div className="flex md:hidden items-center space-x-2">
+        <Image
+          src="/assets/csi-white-text.png"
+          alt="CSI Logo"
+          width={120}
+          height={38}
+          priority
+        />
+        <Image
+          src="/assets/capgemini-logo.png"
+          alt="CSI Logo"
+          width={120}
+          height={40}
+          priority
+          className="mt-2"
+        />
       </div>
       <Link
         href="/"

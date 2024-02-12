@@ -2,6 +2,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import { cn } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const imgUrls = [
   "https://csi-forms.s3.ap-south-1.amazonaws.com/worqhat_log.png",
@@ -19,8 +21,19 @@ const imgUrls2 = [
 ];
 
 export default function About() {
+  const pathname = usePathname();
   return (
     <>
+      <div className="w-fit mx-auto mb-5 font-black underline underline-offset-2 md:hidden">
+        <Link
+          href={cn({
+            "/#eventList": pathname !== "/",
+            "#eventList": pathname === "/",
+          })}
+        >
+          Register Now
+        </Link>
+      </div>
       <section className="flex flex-wrap mb-10">
         <h3 className="text-3xl md:text-5xl mx-auto font-bold text-primary">
           About Us
