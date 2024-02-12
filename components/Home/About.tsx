@@ -24,7 +24,7 @@ export default function About() {
   const pathname = usePathname();
   return (
     <>
-      <div className="w-fit mx-auto mb-5 font-black underline underline-offset-2 md:hidden">
+      <div className="w-fit mx-auto mb-5 font-black text-lg underline underline-offset-2 md:hidden">
         <Link
           href={cn({
             "/#eventList": pathname !== "/",
