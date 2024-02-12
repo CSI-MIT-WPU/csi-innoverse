@@ -19,7 +19,7 @@ const events = [
   {
     time: "21 February 11:00am - 3:30pm",
     event: "Startup Summit",
-    desc: "Dive into the entrepreneurial arena at our Mock Shark Tank event by High Net-Worth Individuals! Join aspiring innovators as they pitch their business ideas, face tough questions, and navigate the thrilling waters of startup scrutiny. Be part of the excitement and witness the next wave of innovation unfold!",
+    desc: "Dive into the entrepreneurial arena at our Mock Shark Tank event by High Net-Worth Individuals! Join aspiring innovators as they pitch their business ideas, face tough questions, and navigate the thrilling waters of startup scrutiny. Be part of the excitement and witness the next wave of innovation unfold! <br> Registration fee:  Rs. 250.<br> Attendees stand a chance to secure funding of up to <b>30 lakh </b> for their startup ventures.<br>After you fill this form, WorqHat will provide another form to get the necessary details of your startup idea. These details will be kept confidential. <br> An ideation template will also be shared soon by the WorqHat team. <br> Only Idea needs to be pitched",
     registerLink: "https://forms.gle/psqfua2X75kc7DeX7",
   },
   {
