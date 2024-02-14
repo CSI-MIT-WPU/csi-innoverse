@@ -25,7 +25,7 @@ const events = [
   {
     time: "21 February 1:00pm - 3:30pm",
     event: "Coding Relay",
-    desc: "Dive into the exhilarating world of coding with 'Coding Relay,' where tech enthusiasts unite for a thrilling event featuring a Tech Quiz, Debugging challenges, and Code exploration. Join us for an evening of collaborative learning and friendly competition in the heart of technology! <br> Round 1: Questions MCQs <br> Round 2: Quizes <br> Round 3: Team Round ",
+    desc: "Dive into the exhilarating world of coding with 'Coding Relay,' where tech enthusiasts unite for a thrilling event featuring a Tech Quiz, Debugging challenges, and Code exploration. Join us for an evening of collaborative learning and friendly competition in the heart of technology! <br> Round 1: Questions MCQs <br> Round 2: Quizes <br> Round 3: Code Round ",
     registerLink: "https://forms.gle/dvsB6xkTjiUDQMWYA",
   },
   {
