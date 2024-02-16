@@ -24,7 +24,7 @@ export function MainNav({
           priority
         />
         <Image
-          src="/assets/capgemini-logo.png"
+          src="/assets/cap_logo.png"
           alt="CSI Logo"
           width={160}
           height={40}
