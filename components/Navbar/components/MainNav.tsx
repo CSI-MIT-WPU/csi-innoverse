@@ -15,7 +15,7 @@ export function MainNav({
       className={cn("flex items-center space-x-4 lg:space-x-6 ", className)}
       {...props}
     >
-      <div className="hidden md:flex items-center space-x-2">
+      <div className="hidden items-center space-x-2 md:flex">
         <Image
           src="/assets/csi-white-text.png"
           alt="CSI Logo"
@@ -32,7 +32,7 @@ export function MainNav({
           className="mt-2"
         />
       </div>
-      <div className="flex md:hidden items-center space-x-2">
+      <div className="flex items-center space-x-2 md:hidden">
         <Image
           src="/assets/csi-white-text.png"
           alt="CSI Logo"
@@ -41,7 +41,7 @@ export function MainNav({
           priority
         />
         <Image
-          src="/assets/capgemini-logo.png"
+          src="/assets/cap_logo.png"
           alt="CSI Logo"
           width={120}
           height={40}
@@ -52,11 +52,11 @@ export function MainNav({
       <Link
         href="/"
         className={cn(
-          "hidden md:block text-sm font-semibold  hover:text-primary transition-colors",
+          "hover:text-primary hidden text-sm font-semibold  transition-colors md:block",
           {
             "text-muted-foreground": pathname !== "/",
             "text-primary": pathname === "/",
-          }
+          },
         )}
         passHref
       >
@@ -65,11 +65,11 @@ export function MainNav({
       <Link
         href="/forms"
         className={cn(
-          "hidden md:block text-sm font-semibold  hover:text-primary transition-colors",
+          "hover:text-primary hidden text-sm font-semibold  transition-colors md:block",
           {
             "text-muted-foreground": pathname !== "/forms",
             "text-primary": pathname === "/forms",
-          }
+          },
         )}
         passHref
       >
@@ -79,7 +79,7 @@ export function MainNav({
         href="https://chat.whatsapp.com/KBJJiKX7opo3CxWmh1pfDE"
         target="_blank"
         className={cn(
-          "hidden md:block text-sm font-semibold  hover:text-primary transition-colors text-muted-foreground"
+          "hover:text-primary text-muted-foreground hidden text-sm  font-semibold transition-colors md:block",
         )}
       >
         Join Whatsapp Group
@@ -90,7 +90,7 @@ export function MainNav({
           "#eventList": pathname === "/",
         })}
         className={cn(
-          "hidden md:flex font-bold hover:underline transition-colors text-primary text-xl"
+          "text-primary hidden text-xl font-bold transition-colors hover:underline md:flex",
         )}
       >
         Register Now
