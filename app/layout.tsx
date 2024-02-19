@@ -8,7 +8,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import TanstackProvider from "./providers/TanstackProvider";
+import TanstackProvider from "@/providers/TanstackProvider";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { AxiomWebVitals } from "next-axiom";
 
@@ -27,8 +27,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "max-w-screen-2xl mx-auto bg-background font-sans antialiased",
-          inter.variable
+          "bg-background mx-auto max-w-screen-2xl font-sans antialiased",
+          inter.variable,
         )}
       >
         <AxiomWebVitals />

@@ -1,10 +1,10 @@
 import { DsaFormSchema, TDsaFormSchema } from "@/lib/types";
-import { NextRequest, NextResponse } from "next/server";
-import { connectToDB } from "@/app/utils/database";
-import DsaSubmission from "@/app/models/dsa-submission";
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
-import sharp from "sharp";
+import DsaSubmission from "@/models/dsa-submission";
+import { connectToDB } from "@/utils/database";
+import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { useSearchParams } from "next/navigation";
+import { NextRequest, NextResponse } from "next/server";
+import sharp from "sharp";
 
 const s3: S3Client = new S3Client({
   region: process.env.AWS_REGION || "",
@@ -47,9 +47,9 @@ export async function POST(request: Request) {
     }
   }
 
-  console.log(otherData.phoneNumber);
+  // console.log(otherData.phoneNumber);
   const result = DsaFormSchema.safeParse(otherData);
-  console.log(result);
+  // console.log(result);
 
   if (result.success) {
     await connectToDB();
@@ -57,7 +57,7 @@ export async function POST(request: Request) {
     try {
       const { uploadResult, fileLocation } = await processAndUploadImage(
         file,
-        s3
+        s3,
       );
 
       newDsaSubmission = new DsaSubmission({

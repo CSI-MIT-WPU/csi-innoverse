@@ -1,7 +1,7 @@
 // import { TDsaFormSchema } from "@/lib/types";
 import { NextResponse } from "next/server";
-import { connectToDB } from "@/app/utils/database";
-import DsaSubmission from "@/app/models/dsa-submission";
+import { connectToDB } from "@/utils/database";
+import DsaSubmission from "@/models/dsa-submission";
 import { questionNos } from "@/app/forms/dsa-submission/data";
 
 interface TDsaFormSchema {
@@ -36,38 +36,43 @@ export async function GET(req: Request, res: Response) {
 
     // Group submissions by email and accumulate points
     const groupedSubmissions: Record<string, GroupedSubmissions> =
-      allSubmissions.reduce((result, submission) => {
-        const { email, points, name, timestamp, id } = submission;
+      allSubmissions.reduce(
+        (result, submission) => {
+          const { email, points, name, timestamp, id } = submission;
 
-        result[email] = result[email] || {
-          name: "",
-          email,
-          points: 0,
-          submissions: [],
-          timestamp: new Date(0), // Initialize timestamp
-        };
+          result[email] = result[email] || {
+            name: "",
+            email,
+            points: 0,
+            submissions: [],
+            timestamp: new Date(0), // Initialize timestamp
+          };
 
-        if (!result[email]?.name || result[email]?.name !== name) {
-          result[email].name = name;
-        }
+          if (!result[email]?.name || result[email]?.name !== name) {
+            result[email].name = name;
+          }
 
-        result[email].points += points;
-        result[email].submissions.push(submission);
+          result[email].points += points;
+          result[email].submissions.push(submission);
 
-        // Update timestamp if the current submission has a later timestamp
-        const questionInfo = getQuestionInfo(id);
-        const revealTime = questionInfo ? questionInfo.revealDate : new Date();
+          // Update timestamp if the current submission has a later timestamp
+          const questionInfo = getQuestionInfo(id);
+          const revealTime = questionInfo
+            ? questionInfo.revealDate
+            : new Date();
 
-        if (timestamp > result[email].timestamp && timestamp > revealTime) {
-          result[email].timestamp = timestamp;
-        }
+          if (timestamp > result[email].timestamp && timestamp > revealTime) {
+            result[email].timestamp = timestamp;
+          }
 
-        return result;
-      }, {} as Record<string, GroupedSubmissions>);
+          return result;
+        },
+        {} as Record<string, GroupedSubmissions>,
+      );
 
     // Convert the grouped submissions to an array and sort by timestamp and points
     const submissionsArray: GroupedSubmissions[] = Object.values(
-      groupedSubmissions
+      groupedSubmissions,
     ).sort((a, b) => {
       // Sort first by points in descending order, then by timestamp in descending order
       return (
@@ -92,7 +97,7 @@ export async function GET(req: Request, res: Response) {
 
 // Helper function to get question information based on question number
 function getQuestionInfo(
-  questionNumber: number
+  questionNumber: number,
 ): { revealDate: Date } | undefined {
   // Replace this with your logic to retrieve question information
   const questionInfo = questionNos.find((q) => q.id === questionNumber);
