@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 import StatsTable from "@/components/StatsTable/page";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -25,20 +26,20 @@ export default function Home() {
   // console.log(qData);
   return (
     <main className="w-full px-4 md:px-12">
-      <h1 className="font-bold text-xl md:text-2xl text-center mt-10 font-mono">
+      <h1 className="mt-10 text-center font-mono text-xl font-bold md:text-2xl">
         CSI MIT-WPU DSA Challenge
       </h1>
-      <p className="text-center font-light mt-1 text-sm text-muted-foreground">
+      <p className="text-muted-foreground mt-1 text-center text-sm font-light">
         In Collaboration with
         <br /> Career Development Centre, MIT-WPU
       </p>
-      <div className="grid gap-4 grid-cols-2 my-10">
-        <Card className="md:w-3/4 hover:border-slate-400 mx-auto col-span-2 mb-8">
-          <CardHeader className="pb-1 font-bold text-xl">
+      <div className="my-10 grid grid-cols-2 gap-4">
+        <Card className="col-span-2 mx-auto mb-8 hover:border-slate-400 md:w-3/4">
+          <CardHeader className="pb-1 text-xl font-bold">
             Today's DSA Question
           </CardHeader>
-          <CardContent className="flex flex-col md:flex-row justify-between text-center text-sm md:text-base mt-4">
-            <div className="text-sm font-normal text-muted-foreground">
+          <CardContent className="mt-4 flex flex-col justify-between text-center text-sm md:flex-row md:text-base">
+            <div className="text-muted-foreground text-sm font-normal">
               {qData === null ? (
                 <div>Some error occured</div>
               ) : (
@@ -53,7 +54,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     href={qData?.link.toString()}
                     target="_blank"
-                    className="font-semibold text-foreground hover:underline"
+                    className="text-foreground font-semibold hover:underline"
                   >
                     Click Here for question link
                   </a>
@@ -64,13 +65,13 @@ export default function Home() {
               <a href="https://chat.whatsapp.com/FpuL78HELIv4wLAcYwWOYf">
                 <Button
                   variant="outline"
-                  className="mt-4 md:mt-0 text-sm mb-2 mr-2"
+                  className="mb-2 mr-2 mt-4 text-sm md:mt-0"
                 >
                   Join Whatsapp Group
                 </Button>
               </a>
               <Link href="/forms/dsa-submission">
-                <Button variant="outline" className="mt-4 md:mt-0 font-bold">
+                <Button variant="outline" className="mt-4 font-bold md:mt-0">
                   Submission Form
                 </Button>
               </Link>
@@ -79,7 +80,7 @@ export default function Home() {
         </Card>
       </div>
       <hr />
-      <h3 className="text-2xl font-bold mt-3">DSA Scores</h3>
+      <h3 className="mt-3 text-2xl font-bold">DSA Scores</h3>
       <StatsTable
         data={data}
         error={error}
