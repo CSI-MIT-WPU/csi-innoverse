@@ -17,14 +17,15 @@ const imgUrls = [
 const imgUrls2 = [
   "https://csi-forms.s3.ap-south-1.amazonaws.com/vit_logo.png",
   "https://csi-forms.s3.ap-south-1.amazonaws.com/coep_logo.png",
-  "https://csi-forms.s3.ap-south-1.amazonaws.com/dpu_logo.png",
+  // "https://csi-forms.s3.ap-south-1.amazonaws.com/dpu_logo.png",
+  "https://csi-forms.s3.ap-south-1.amazonaws.com/dy_new_logo.png",
 ];
 
 export default function About() {
   const pathname = usePathname();
   return (
     <>
-      <div className="w-fit mx-auto mb-5 font-black text-lg underline underline-offset-2 md:hidden">
+      <div className="mx-auto mb-5 w-fit text-lg font-black underline underline-offset-2 md:hidden">
         <Link
           href={cn({
             "/#eventList": pathname !== "/",
@@ -34,8 +35,8 @@ export default function About() {
           Register Now
         </Link>
       </div>
-      <section className="flex flex-wrap mb-10">
-        <h3 className="text-3xl md:text-5xl mx-auto font-bold text-primary">
+      <section className="mb-10 flex flex-wrap">
+        <h3 className="text-primary mx-auto text-3xl font-bold md:text-5xl">
           About Us
         </h3>
         {/* <p className="text-center my-3 text-xs md:text-base text-muted-foreground">
@@ -53,8 +54,8 @@ export default function About() {
         <h5 className="text-lg md:text-xl text-center mx-auto font-bold text-primary">
           CSI Presents Collaborate Socialize and Innovate
         </h5> */}
-        <p className="text-center my-3 text-xs md:text-base text-muted-foreground">
-          <span className="md:text-lg font-medium text-primary">
+        <p className="text-muted-foreground my-3 text-center text-xs md:text-base">
+          <span className="text-primary font-medium md:text-lg">
             CSI Innoverse{" "}
           </span>{" "}
           - Embark on a tech-filled journey at our event, featuring a Coding
@@ -72,15 +73,15 @@ export default function About() {
           creativity, technology, and collaboration!
         </p>
         <div className="mx-auto">
-          <h4 className="text-2xl md:text-3xl mx-auto text-center font-bold text-primary mt-10">
+          <h4 className="text-primary mx-auto mt-10 text-center text-2xl font-bold md:text-3xl">
             In Collaboration with CSI Chapters of
           </h4>
-          <Card className={cn("w-fit mx-auto md:w-fit min-w-80 mt-8")}>
-            <CardContent className="grid gap-x-12 mx-10 gap-y-5 grid-cols-1 md:grid-cols-3 mt-8 mb-4">
+          <Card className={cn("mx-auto mt-8 w-fit min-w-80 md:w-fit")}>
+            <CardContent className="mx-10 mb-4 mt-8 grid grid-cols-1 gap-x-12 gap-y-5 md:grid-cols-3">
               {imgUrls2.map((img) => {
                 return (
                   <img
-                    className="h-14 lg:h-20 min-w-fit my-auto mx-auto"
+                    className="mx-auto my-auto h-14 min-w-fit lg:h-20"
                     key={img}
                     src={img}
                     alt="college logos"
@@ -89,17 +90,17 @@ export default function About() {
               })}
             </CardContent>
           </Card>
-          <h4 className="text-2xl md:text-3xl mx-auto text-center font-bold text-primary mt-10">
+          <h4 className="text-primary mx-auto mt-10 text-center text-2xl font-bold md:text-3xl">
             Our Resource Partners
           </h4>
           <Card
-            className={cn("w-fit mx-auto md:w-full min-w-80 mt-8 bg-white")}
+            className={cn("mx-auto mt-8 w-fit min-w-80 bg-white md:w-full")}
           >
-            <CardContent className="grid gap-x-10 gap-y-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mt-8 mb-4">
+            <CardContent className="mb-4 mt-8 grid grid-cols-2 gap-x-10 gap-y-5 md:grid-cols-3 lg:grid-cols-6">
               {imgUrls.map((img) => {
                 return (
                   <img
-                    className="h-14 lg:h-20 min-w-fit my-auto mx-auto"
+                    className="mx-auto my-auto h-14 min-w-fit lg:h-20"
                     key={img}
                     src={img}
                     alt="brand logos"
