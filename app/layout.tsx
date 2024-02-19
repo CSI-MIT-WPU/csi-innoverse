@@ -6,8 +6,6 @@ import { Navbar } from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import TanstackProvider from "@/providers/TanstackProvider";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { AxiomWebVitals } from "next-axiom";
@@ -44,8 +42,6 @@ export default function RootLayout({
             {children}
             <Footer />
           </ThemeProvider>
-          <Analytics />
-          <SpeedInsights />
         </TanstackProvider>
         <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS || ""} />
       </body>
