@@ -34,10 +34,10 @@ export default function Home() {
       </p>
       <div className="my-10 grid grid-cols-2 gap-4">
         <Card className="col-span-2 mx-auto mb-8 hover:border-slate-400 md:w-3/4">
-          <CardHeader className="pb-1 text-xl font-bold">
-            Today's DSA Question
+          <CardHeader className="pb-6 text-center text-xl font-bold">
+            DSA Challenge has ended. Thank you for participating.
           </CardHeader>
-          <CardContent className="mt-4 flex flex-col justify-between text-center text-sm md:flex-row md:text-base">
+          {/* <CardContent className="mt-4 flex flex-col justify-between text-center text-sm md:flex-row md:text-base">
             <div className="text-muted-foreground text-sm font-normal">
               {qData === null ? (
                 <div>Some error occured</div>
@@ -75,7 +75,7 @@ export default function Home() {
                 </Button>
               </Link>
             </div>
-          </CardContent>
+          </CardContent> */}
         </Card>
       </div>
       <hr />
