@@ -37,45 +37,11 @@ export default function Home() {
           <CardHeader className="pb-6 text-center text-xl font-bold">
             DSA Challenge has ended. Thank you for participating.
           </CardHeader>
-          {/* <CardContent className="mt-4 flex flex-col justify-between text-center text-sm md:flex-row md:text-base">
-            <div className="text-muted-foreground text-sm font-normal">
-              {qData === null ? (
-                <div>Some error occured</div>
-              ) : (
-                <>
-                  <p className="mb-1">
-                    <span className="mr-2">
-                      Question Number: {qData?.qNo.toString()}
-                    </span>
-                    {qData?.question}
-                  </p>
-                  <a
-                    rel="noopener noreferrer"
-                    href={qData?.link.toString()}
-                    target="_blank"
-                    className="text-foreground font-semibold hover:underline"
-                  >
-                    Click Here for question link
-                  </a>
-                </>
-              )}
+          <CardContent className="mt-4 flex flex-col justify-between text-center text-sm md:flex-row md:text-base">
+            <div className="text-muted-foreground mx-auto w-fit text-center text-sm font-normal">
+              Winners will be soon announced
             </div>
-            <div>
-              <a href="https://chat.whatsapp.com/FpuL78HELIv4wLAcYwWOYf">
-                <Button
-                  variant="outline"
-                  className="mb-2 mr-2 mt-4 text-sm md:mt-0"
-                >
-                  Join Whatsapp Group
-                </Button>
-              </a>
-              <Link href="/forms/dsa-submission">
-                <Button variant="outline" className="mt-4 font-bold md:mt-0">
-                  Submission Form
-                </Button>
-              </Link>
-            </div>
-          </CardContent> */}
+          </CardContent>
         </Card>
       </div>
       <hr />
